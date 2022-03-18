@@ -24,19 +24,20 @@ struct List {
 //VERIFIER AVANT QUE PAS DANS LA LISTE SINON MECHANT MONSIEUR
 void supprlast(struct List* list,char* nom){
   struct node * tmp = list->start; 
-  if(list->start == NULL){
+  if(list->start == NULL){ //List Vide
     return;
-  }else if(list->start != NULL && list->start == list->end){
+  }else if(list->start != NULL && list->start == list->end){ // List d'un element 
     free(list->start);
     list->start = NULL;
     list->end = NULL;
-  }else{
-    while(tmp->next != list->end){
+  }else{ // Sinon supprimer le dernier element
+    while(tmp->next != list->end){ // Place le token au dernier element puis suppression
       tmp = tmp->next;
     }
     free(list->end);
     list->end = tmp;
     tmp->next = NULL;
+    list->addr_max--;
   }
 }
 //CLEAR LIST
@@ -82,25 +83,26 @@ int inlist(struct List list,char * nom,int* adress){
 
 
 //VERIFIER AVANT QUE PAS DANS LA LISTE SINON MECHANT MONSIEUR
-void insert(struct List* list, char * nom, int type, int adresse){
+void insert(struct List* list, char * nom, int type){
 	if(list->start==NULL){
 		list->start = malloc(sizeof(struct node));
     list->start->nom = strdup(nom);
     list->start->type = type;
-    list->start->adresse = adresse;
+    list->start->adresse = list->addr_max++;
     list->start->next = NULL;
 		list->end = list->start;
 	}else{
     list->end->next = malloc(sizeof(struct node));
     list->end->next->nom= strdup(nom);
     list->end->next->type = type;
-    list->end->next->adresse = adresse;
+    list->end->next->adresse = list->addr_max++;
     list->end->next->next = NULL;
 		list->end = list->end->next;
 	}
 }
 
 struct List notre_list;
+FILE* fichier = NULL;
 
 
 %}
@@ -111,7 +113,7 @@ struct List notre_list;
 %start prgm
 %%
 
-prgm: tINT tMAIN {notre_list.addr_max= 0;} tOPEN_BRKT Expr tCLOSE_BRKT {print_list(&notre_list);};
+prgm: tINT tMAIN {fichier = fopen("compilateur_asm.txt", "w"); notre_list.addr_max= 0;} tOPEN_BRKT Expr tCLOSE_BRKT {print_list(&notre_list);fclose(fichier);};
 
 Expr : tCONST DeclConst
     | tINT DeclInt  
@@ -125,8 +127,7 @@ DeclConst : tVARIABLE tEQL tNUM tCOMMA
 {   //TEST SI VARIABLE DEJA DECLARE
     int adress;
     if(inlist(notre_list,$1,&adress)==0){      
-      insert(&notre_list,$1,2,notre_list.addr_max);
-      notre_list.addr_max++;
+      insert(&notre_list,$1,2);
       printf("%s\n",$1); 
       //CODE ASM
 
@@ -138,18 +139,54 @@ DeclConst : tVARIABLE tEQL tNUM tCOMMA
 {   //TEST SI VARIABLE DEJA DECLARE
     int adress;
     if(inlist(notre_list,$1,&adress)==0){
-      insert(&notre_list,$1,2,notre_list.addr_max);
-      notre_list.addr_max++;
+      insert(&notre_list,$1,2);
       printf("%s\n",$1); 
       //CODE ASM
     }else{
       printf("déja déclarée \n");}} 
           ; 
 
-DeclInt   : tVARIABLE tEQL tNUM tCOMMA DeclInt 
+DeclInt   : tVARIABLE tEQL tNUM tCOMMA 
+{   //TEST SI VARIABLE DEJA DECLARE
+    int adress;
+    if(inlist(notre_list,$1,&adress)==0){
+      insert(&notre_list,$1,1);
+      printf("%s\n",$1); 
+      //CODE ASM
+    }else{
+      printf("déja déclarée \n");}} 
+      DeclInt 
+
           | tVARIABLE tEQL tNUM tSEMICOLON
-          | tVARIABLE tCOMMA DeclInt 
+{   //TEST SI VARIABLE DEJA DECLARE
+    int adress;
+    if(inlist(notre_list,$1,&adress)==0){
+      insert(&notre_list,$1,1);
+      printf("%s\n",$1); 
+      //CODE ASM
+    }else{
+      printf("déja déclarée \n");}} 
+
+          | tVARIABLE tCOMMA 
+{   //TEST SI VARIABLE DEJA DECLARE
+    int adress;
+    if(inlist(notre_list,$1,&adress)==0){
+      insert(&notre_list,$1,1);
+      printf("%s\n",$1); 
+      //CODE ASM
+    }else{
+      printf("déja déclarée \n");}} 
+      DeclInt 
+
           | tVARIABLE tSEMICOLON
+{   //TEST SI VARIABLE DEJA DECLARE
+    int adress;
+    if(inlist(notre_list,$1,&adress)==0){
+      insert(&notre_list,$1,1);
+      printf("%s\n",$1); 
+      //CODE ASM
+    }else{
+      printf("déja déclarée \n");}} 
           ; 
 
 operateur : tADD 
