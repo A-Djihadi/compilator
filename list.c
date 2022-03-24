@@ -1,6 +1,6 @@
 #include "list.h"
 
-void supprlast(struct List* list,char* nom){
+void supprlast(struct List* list){
   struct node * tmp = list->start; 
   if(list->start == NULL){ //List Vide
     return;
@@ -8,6 +8,7 @@ void supprlast(struct List* list,char* nom){
     free(list->start);
     list->start = NULL;
     list->end = NULL;
+    list->addr_max--;
   }else{ // Sinon supprimer le dernier element
     while(tmp->next != list->end){ // Place le token au dernier element puis suppression
       tmp = tmp->next;

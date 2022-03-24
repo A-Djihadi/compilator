@@ -21,7 +21,7 @@ struct List {
 
 /*removes the last element of the list  
   /!\ should not be called on an empty list*/
-void supprlast(struct List* list,char* nom);
+void supprlast(struct List* list);
 
 // clears the list and empties the memory
 void clearlist(struct List* list);
@@ -31,6 +31,7 @@ void print_list(struct List *list);
 
 /* checks if an element is in the list:
   returns 0 not found, 1 it's an int, 2 it's a const
+  3 is temporary variables 4 int without value 
   and sets adress to the saved adress*/
 int inlist(struct List list,char * nom,int* adress);
 

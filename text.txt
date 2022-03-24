@@ -2,13 +2,11 @@ int main(){
 
     int toto = 5;
 
-    const variableName = 10;
     const variableName = 54;
     const M4Trix = 42;
-    M4Trix = 42;
-    int toto,michel, michelle =12;
-    int M0M4_Y3Men_OKAY = 6545654654;
-    toto = monfront + 5;
-    rien = 5;
-    variableName = 20;
+    int michel = 10, michelle =12;
+    int M0M4_Y3Men_OKAY = 654565465;
+    michel = toto + 5;
+    toto = 5* toto + 5 *6   ;
+    printf(toto);
 }

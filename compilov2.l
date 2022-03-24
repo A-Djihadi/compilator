@@ -8,22 +8,25 @@
 %%
 
 "main()" {return tMAIN ;}
-"{" {return tOPEN_BRKT ;}
-"}" {return tCLOSE_BRKT ;}
+"if" {return tIF ;}
+"ELSE" {return tELSE ;}
+"while" {return tWHILE ;}
 "const" {return tCONST ;}
 "int" {return tINT;}
+"printf" {return tPRINTF;}
+"{" {return tOPEN_BRKT ;}
+"}" {return tCLOSE_BRKT ;}
+"(" {return tOPEN_PAR;}
+")" {return tCLOSE_PAR;}
 "+" {return tADD;}
 "-" {return tSUB;}
 "*" {return tMUL;}
 "/" {return tDIV;}
 "=" {return tEQL;}
-"(" {return tOPEN_PAR;}
-")" {return tCLOSE_PAR;}
-[ \t]+ {;}
 "," {return tCOMMA;}
 "\n" {;}
 ";" {return tSEMICOLON;}
-"printf" {return tPRINTF;}
+[ \t]+ {;}
 
 [0-9]+([e][0-9]+)? {
     yylval.nb = (int)strtold(yytext,NULL);
