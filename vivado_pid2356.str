@@ -1,0 +1,75 @@
+/*
+
+Xilinx Vivado v2018.2 (64-bit) [Major: 2018, Minor: 2]
+SW Build: 2258646 on Thu Jun 14 20:02:38 MDT 2018
+IP Build: 2256618 on Thu Jun 14 22:10:49 MDT 2018
+
+Process ID: 2356
+License: Customer
+
+Current time: 	Tue Apr 12 09:22:12 CEST 2022
+Time zone: 	Central European Time (Europe/Paris)
+
+OS: Ubuntu
+OS Version: 5.13.0-39-generic
+OS Architecture: amd64
+Available processors (cores): 12
+
+Display: :0.0
+Screen size: 1920x1080
+Screen resolution (DPI): 96
+Available screens: 1
+Available disk space: 92 GB
+Default font: family=Dialog,name=Dialog,style=plain,size=12
+
+Java version: 	1.8.0_112 64-bit
+Java home: 	/usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/tps/lnx64/jre
+Java executable location: 	/usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/tps/lnx64/jre/bin/java
+Java initial memory (-Xms): 	128 MB
+Java maximum memory (-Xmx):	 2 GB
+
+
+User name: 	ahamdy
+User home directory: /home/ahamdy
+User working directory: /home/ahamdy/Bureau/prog_system
+User country: 	FR
+User language: 	fr
+User locale: 	fr_FR
+
+RDI_BASEROOT: /usr/local/insa/Xilinx.VIVADO/Vivado
+HDI_APPROOT: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2
+RDI_DATADIR: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/data
+RDI_BINDIR: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin
+
+Vivado preferences file location: /home/ahamdy/.Xilinx/Vivado/2018.2/vivado.xml
+Vivado preferences directory: /home/ahamdy/.Xilinx/Vivado/2018.2/
+Vivado layouts directory: /home/ahamdy/.Xilinx/Vivado/2018.2/layouts
+PlanAhead jar file location: 	/usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/lib/classes/planAhead.jar
+Vivado log file location: 	/home/ahamdy/Bureau/prog_system/vivado.log
+Vivado journal file location: 	/home/ahamdy/Bureau/prog_system/vivado.jou
+Engine tmp dir: 	./.Xil/Vivado-2356-insa-20546
+
+Xilinx Environment Variables
+----------------------------
+XILINX: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/ids_lite/ISE
+XILINXD_LICENSE_FILE: /usr/local/insa/Xilinx.VIVADO/Xilinx.lic
+XILINX_DSP: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/ids_lite/ISE
+XILINX_PLANAHEAD: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2
+XILINX_SDK: /usr/local/insa/Xilinx.VIVADO/SDK/2018.2
+XILINX_VIVADO: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2
+XILINX_VIVADO_HLS: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2
+
+
+GUI allocated memory:	146 MB
+GUI max memory:		3,052 MB
+Engine allocated memory: 893 MB
+
+Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+*/
+
+// TclEventType: START_GUI
+// [GUI Memory]: 58 MB (+57976kb) [00:00:10]
+// [Engine Memory]: 875 MB (+766040kb) [00:00:10]
+// Tcl Message: start_gui 
+// HMemoryUtils.trashcanNow. Engine heap size: 893 MB. GUI used memory: 41 MB. Current time: 4/12/22 9:22:14 AM CEST
