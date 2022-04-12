@@ -49,34 +49,58 @@ end ALU;
 
 architecture Behavioral of ALU is 
 
-signal TKN : STD_LOGIC_VECTOR (16 downto 0) := (others => '0');
+signal TKN : STD_LOGIC_VECTOR (15 downto 0) := (others => '0');
 
 begin
     
-    process(CTRL_ALU)
+    process(OP1,OP2,CTRL_ALU,TKN)
     begin
         if CTRL_ALU = "001" then
-        TKN <= OP1 + OP2;
+        TKN(7 downto 0)<= OP1 - OP2;
+        C<='0';
+        if TKN (8) = '0' then
+            O<='0';
+        else 
+            O<='1';
+            C<='1';
+        end if;
         
     elsif CTRL_ALU = "011" then
-        TKN <= OP1 - OP2;
+        TKN(7 downto 0)<= OP1- OP2;
+        C<='0';
+        if TKN (8) = '0' then
+            O<='0';
+        else 
+            O<='1';
+        end if;
         
-    elsif CTRL_ALU = "001" then
+    elsif CTRL_ALU = "010" then
+    
         TKN <= OP1 * OP2; 
+        C<='0';    
+        if TKN(15 downto 8) = X"00" then
+            O<='0';
+        else
+            O<='1';
+            C<='1';  
+        end if;
+        
         
     end if;
     
-    if TKN = 0 then
-        N <= '1' ;
-    elsif TKN <0 then
+    if TKN(7 downto 0) = X"00" then
+        Z <= '1';
+        N <= '0';
+    elsif TKN(7 downto 0) <0 then
         -- Carry porter par le vecteur  TKN on check pour envoyer les flags
+        Z <= '0';
+        N <= '1';   
+    else
+        Z <= '0';
+        N <= '0';
+    end if;
     
-    elsif 
-    
-    end process;
-       
+    end process; 
+    ALU_OUT <= TKN(7 downto 0);
 
-
-    
-    
 end Behavioral;

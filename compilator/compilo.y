@@ -293,6 +293,14 @@ VarOrNum: tVARIABLE {
         ; 
 
 
+
+tIF : tOPEN_PAR ExprArit tEQL ExprArit tCLOSE_PAR tOPEN_BRKT tCLOSE_BRKT;
+      | 
+
+
+tWHHILE : tOPEN_PAR ExprArit tEQL ExprArit tCLOSE_PAR tOPEN_BRKT tCLOSE_BRKT;
+      |
+
 %%
 void yyerror(char *s) { fprintf(stderr, "%s\n", s); }
 int main(void) {
