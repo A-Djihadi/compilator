@@ -1,0 +1,753 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Apr 21 09:31:20 2022
+# Process ID: 2981
+# Current directory: /home/ahamdy/Bureau/prog_system
+# Command line: vivado
+# Log file: /home/ahamdy/Bureau/prog_system/vivado.log
+# Journal file: /home/ahamdy/Bureau/prog_system/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.xpr
+Scanning sources...
+Finished scanning sources
+INFO: [IP_Flow 19-234] Refreshing IP repositories
+INFO: [IP_Flow 19-1704] No user IP repositories specified
+INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/data/ip'.
+open_project: Time (s): cpu = 00:00:10 ; elapsed = 00:00:14 . Memory (MB): peak = 6155.527 ; gain = 115.469 ; free physical = 10463 ; free virtual = 21836
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 09:33:09 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 6
+[Thu Apr 21 09:33:58 2022] Launched impl_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/impl_1/runme.log
+open_run impl_1
+INFO: [Netlist 29-17] Analyzing 31 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.2
+INFO: [Device 21-403] Loading part xc7a35tcpg236-1
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.31 . Memory (MB): peak = 6376.309 ; gain = 0.000 ; free physical = 10141 ; free virtual = 21606
+Restored from archive | CPU: 0.020000 secs | Memory: 0.191841 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.31 . Memory (MB): peak = 6376.309 ; gain = 0.000 ; free physical = 10141 ; free virtual = 21606
+INFO: [Project 1-111] Unisim Transformation Summary:
+No Unisim elements were transformed.
+
+open_run: Time (s): cpu = 00:00:10 ; elapsed = 00:00:14 . Memory (MB): peak = 6522.973 ; gain = 325.977 ; free physical = 10052 ; free virtual = 21521
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'ALU_SIMU' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+xvhdl --incr --relax -prj ALU_SIMU_vhdl.prj
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 85fdfe322208446db5d9005212aa50eb --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot ALU_SIMU_behav xil_defaultlib.ALU_SIMU -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "ALU_SIMU_behav -key {Behavioral:sim_1:Functional:ALU_SIMU} -tclbatch {ALU_SIMU.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+source ALU_SIMU.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'ALU_SIMU_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:06 ; elapsed = 00:00:05 . Memory (MB): peak = 6673.145 ; gain = 120.238 ; free physical = 9833 ; free virtual = 21349
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 09:43:21 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'ALU_SIMU' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+xvhdl --incr --relax -prj ALU_SIMU_vhdl.prj
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ALU
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 85fdfe322208446db5d9005212aa50eb --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot ALU_SIMU_behav xil_defaultlib.ALU_SIMU -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity xil_defaultlib.ALU [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.alu_simu
+Built simulation snapshot ALU_SIMU_behav
+
+****** Webtalk v2018.2 (64-bit)
+  **** SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+  **** IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
+
+source /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim/xsim.dir/ALU_SIMU_behav/webtalk/xsim_webtalk.tcl -notrace
+INFO: [Common 17-206] Exiting Webtalk at Thu Apr 21 09:44:29 2022...
+run_program: Time (s): cpu = 00:00:03 ; elapsed = 00:00:08 . Memory (MB): peak = 6962.152 ; gain = 0.000 ; free physical = 9540 ; free virtual = 21106
+INFO: [USF-XSim-69] 'elaborate' step finished in '9' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "ALU_SIMU_behav -key {Behavioral:sim_1:Functional:ALU_SIMU} -tclbatch {ALU_SIMU.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+source ALU_SIMU.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'ALU_SIMU_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+launch_simulation: Time (s): cpu = 00:00:05 ; elapsed = 00:00:11 . Memory (MB): peak = 6965.145 ; gain = 2.992 ; free physical = 9522 ; free virtual = 21088
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs impl_1 -jobs 6
+[Thu Apr 21 09:48:18 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+[Thu Apr 21 09:48:18 2022] Launched impl_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/impl_1/runme.log
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'ALU_SIMU' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+xvhdl --incr --relax -prj ALU_SIMU_vhdl.prj
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ALU
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 85fdfe322208446db5d9005212aa50eb --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot ALU_SIMU_behav xil_defaultlib.ALU_SIMU -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling architecture behavioral of entity xil_defaultlib.ALU [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.alu_simu
+Built simulation snapshot ALU_SIMU_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "ALU_SIMU_behav -key {Behavioral:sim_1:Functional:ALU_SIMU} -tclbatch {ALU_SIMU.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+source ALU_SIMU.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'ALU_SIMU_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 09:54:48 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 09:55:50 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 09:56:50 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 09:59:20 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 10:01:03 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 10:03:29 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 10:05:31 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 10:10:14 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 10:12:54 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'ALU_SIMU' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+xvhdl --incr --relax -prj ALU_SIMU_vhdl.prj
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ALU
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 85fdfe322208446db5d9005212aa50eb --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot ALU_SIMU_behav xil_defaultlib.ALU_SIMU -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.ALU [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.alu_simu
+Built simulation snapshot ALU_SIMU_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "ALU_SIMU_behav -key {Behavioral:sim_1:Functional:ALU_SIMU} -tclbatch {ALU_SIMU.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+source ALU_SIMU.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'ALU_SIMU_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 10:16:34 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'ALU_SIMU' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+xvhdl --incr --relax -prj ALU_SIMU_vhdl.prj
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ALU
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 85fdfe322208446db5d9005212aa50eb --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot ALU_SIMU_behav xil_defaultlib.ALU_SIMU -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.ALU [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.alu_simu
+Built simulation snapshot ALU_SIMU_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "ALU_SIMU_behav -key {Behavioral:sim_1:Functional:ALU_SIMU} -tclbatch {ALU_SIMU.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+source ALU_SIMU.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'ALU_SIMU_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'ALU_SIMU' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+xvhdl --incr --relax -prj ALU_SIMU_vhdl.prj
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/ALU_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ALU_SIMU
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 85fdfe322208446db5d9005212aa50eb --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot ALU_SIMU_behav xil_defaultlib.ALU_SIMU -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.ALU [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.alu_simu
+Built simulation snapshot ALU_SIMU_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "ALU_SIMU_behav -key {Behavioral:sim_1:Functional:ALU_SIMU} -tclbatch {ALU_SIMU.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+source ALU_SIMU.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'ALU_SIMU_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 10:54:28 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'ALU_SIMU' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+xvhdl --incr --relax -prj ALU_SIMU_vhdl.prj
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ALU
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/ALU_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ALU_SIMU
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 85fdfe322208446db5d9005212aa50eb --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot ALU_SIMU_behav xil_defaultlib.ALU_SIMU -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.ALU [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.alu_simu
+Built simulation snapshot ALU_SIMU_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '2' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "ALU_SIMU_behav -key {Behavioral:sim_1:Functional:ALU_SIMU} -tclbatch {ALU_SIMU.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+source ALU_SIMU.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'ALU_SIMU_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'ALU_SIMU' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+xvhdl --incr --relax -prj ALU_SIMU_vhdl.prj
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/ALU_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ALU_SIMU
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 85fdfe322208446db5d9005212aa50eb --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot ALU_SIMU_behav xil_defaultlib.ALU_SIMU -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.ALU [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.alu_simu
+Built simulation snapshot ALU_SIMU_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "ALU_SIMU_behav -key {Behavioral:sim_1:Functional:ALU_SIMU} -tclbatch {ALU_SIMU.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+source ALU_SIMU.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+ERROR: Array sizes do not match, left array has 16 elements, right array has 8 elements
+Time: 1 ns  Iteration: 0  Process: /ALU_SIMU/Label_uut/line__63
+  File: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd
+
+HDL Line: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:118
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'ALU_SIMU_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 10:57:44 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'ALU_SIMU' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+xvhdl --incr --relax -prj ALU_SIMU_vhdl.prj
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 85fdfe322208446db5d9005212aa50eb --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot ALU_SIMU_behav xil_defaultlib.ALU_SIMU -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+INFO: [XSIM 43-4323] No Change in HDL. Linking previously generated obj files to create kernel
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "ALU_SIMU_behav -key {Behavioral:sim_1:Functional:ALU_SIMU} -tclbatch {ALU_SIMU.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+source ALU_SIMU.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+ERROR: Array sizes do not match, left array has 16 elements, right array has 8 elements
+Time: 1 ns  Iteration: 0  Process: /ALU_SIMU/Label_uut/line__63
+  File: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd
+
+HDL Line: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:118
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'ALU_SIMU_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+add_bp {/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd} 118
+remove_bps -file {/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd} -line 118
+add_bp {/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd} 118
+remove_bps -file {/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd} -line 118
+add_bp {/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd} 118
+remove_bps -file {/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd} -line 118
+set_property top ALU [current_fileset]
+update_compile_order -fileset sources_1
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 10:59:57 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+reset_run synth_1
+WARNING: [Vivado 12-1017] Problems encountered:
+1. Failed to delete one or more files in run directory /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 11:00:33 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+launch_simulation
+INFO: [Vivado 12-5682] Launching behavioral simulation in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [SIM-utils-51] Simulation object is 'sim_1'
+INFO: [SIM-utils-54] Inspecting design source files for 'ALU_SIMU' in fileset 'sim_1'...
+INFO: [USF-XSim-97] Finding global include files...
+INFO: [USF-XSim-98] Fetching design files from 'sim_1'...
+INFO: [USF-XSim-2] XSim::Compile design
+INFO: [USF-XSim-61] Executing 'COMPILE and ANALYZE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+xvhdl --incr --relax -prj ALU_SIMU_vhdl.prj
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ALU
+INFO: [USF-XSim-69] 'compile' step finished in '1' seconds
+INFO: [USF-XSim-3] XSim::Elaborate design
+INFO: [USF-XSim-61] Executing 'ELABORATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+Vivado Simulator 2018.2
+Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
+Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 85fdfe322208446db5d9005212aa50eb --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot ALU_SIMU_behav xil_defaultlib.ALU_SIMU -log elaborate.log 
+Using 8 slave threads.
+Starting static elaboration
+Completed static elaboration
+Starting simulation data flow analysis
+Completed simulation data flow analysis
+Time Resolution for simulation is 1ps
+Compiling package std.standard
+Compiling package std.textio
+Compiling package ieee.std_logic_1164
+Compiling package ieee.numeric_std
+Compiling architecture behavioral of entity xil_defaultlib.ALU [alu_default]
+Compiling architecture behavioral of entity xil_defaultlib.alu_simu
+Built simulation snapshot ALU_SIMU_behav
+INFO: [USF-XSim-69] 'elaborate' step finished in '1' seconds
+INFO: [USF-XSim-4] XSim::Simulate design
+INFO: [USF-XSim-61] Executing 'SIMULATE' step in '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.sim/sim_1/behav/xsim'
+INFO: [USF-XSim-98] *** Running xsim
+   with args "ALU_SIMU_behav -key {Behavioral:sim_1:Functional:ALU_SIMU} -tclbatch {ALU_SIMU.tcl} -log {simulate.log}"
+INFO: [USF-XSim-8] Loading simulator feature
+Vivado Simulator 2018.2
+Time resolution is 1 ps
+source ALU_SIMU.tcl
+# set curr_wave [current_wave_config]
+# if { [string length $curr_wave] == 0 } {
+#   if { [llength [get_objects]] > 0} {
+#     add_wave /
+#     set_property needs_save false [current_wave_config]
+#   } else {
+#      send_msg_id Add_Wave-1 WARNING "No top level signals found. Simulator will start without a wave window. If you want to open a wave window go to 'File->New Waveform Configuration' or type 'create_wave_config' in the TCL console."
+#   }
+# }
+# run 1000ns
+Error: DIV, MOD, or REM by zero
+Time: 400 ns  Iteration: 0  Process: /ALU_SIMU/Label_uut/line__63  File: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd
+Command failed: Simulator command interrupted.
+
+Simulation engine not responding
+The simulator has terminated in an unexpected manner.  Please review the simulation log (xsim.log) for details.
+INFO: [USF-XSim-96] XSim completed. Design snapshot 'ALU_SIMU_behav' loaded.
+INFO: [USF-XSim-97] XSim simulation ran for 1000ns
+reset_run synth_1
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 11:02:23 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 6
+[Thu Apr 21 11:02:57 2022] Launched impl_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/impl_1/runme.log
+refresh_design
+INFO: [Netlist 29-17] Analyzing 56 Unisim elements for replacement
+INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
+INFO: [Project 1-479] Netlist was created with Vivado 2018.2
+INFO: [Project 1-570] Preparing netlist for logic optimization
+Reading XDEF placement.
+Reading placer database...
+Reading XDEF routing.
+Read XDEF File: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 7371.387 ; gain = 0.000 ; free physical = 8292 ; free virtual = 20451
+Restored from archive | CPU: 0.020000 secs | Memory: 0.347618 MB |
+Finished XDEF File Restore: Time (s): cpu = 00:00:00.02 ; elapsed = 00:00:00.02 . Memory (MB): peak = 7371.387 ; gain = 0.000 ; free physical = 8292 ; free virtual = 20451
+WARNING: [Timing 38-313] There are no user specified timing constraints. Timing constraints are needed for proper timing analysis.
+reset_run synth_1
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 11:06:18 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 6
+[Thu Apr 21 11:06:56 2022] Launched impl_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 11:10:57 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+launch_runs impl_1 -jobs 6
+[Thu Apr 21 11:12:26 2022] Launched impl_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/impl_1/runme.log
+reset_run synth_1
+launch_runs synth_1 -jobs 6
+[Thu Apr 21 11:16:05 2022] Launched synth_1...
+Run output will be captured here: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/runme.log
+close_design
+close_sim
+INFO: [Simtcl 6-16] Simulation closed
+exit
+INFO: [Common 17-206] Exiting Vivado at Thu Apr 21 11:20:01 2022...

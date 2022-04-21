@@ -87,11 +87,21 @@ Label_uut: ALU PORT MAP (
     ALU_OUT => TEST_DOUT
 );
 
--- Stimulus process
--- T1 < T2 et T3 < T4
-T_OP1   <= X"04" after 150 ns,X"02" after 175 ns,X"04" after 200 ns, X"FF" after 500 ns,X"25" after 800 ns;
-T_OP2   <= X"08" after 170 ns,X"01" after 200 ns, X"04" after 500 ns,X"64" after 800 ns;
-OPERATOR <= "001" after 1 ns,"010" after 120 ns,"011" after 250 ns,"010" after 300 ns,"001" after 650 ns;
+
+-- Simu process
+
+-- TEST OPERATOR ADD MULL AND SUB CHECK FLAGS AND RESULTS
+ 
+--T_OP1   <= X"04" after 150 ns,X"02" after 175 ns,X"04" after 200 ns, X"FF" after 500 ns,X"25" after 800 ns,X"12" after 850 ns;
+--T_OP2   <= X"08" after 170 ns,X"01" after 200 ns, X"04" after 500 ns,X"64" after 800 ns,X"02" after 850 ns;
+--OPERATOR <= "001" after 1 ns,"010" after 120 ns,"011" after 250 ns,"010" after 300 ns,"001" after 650 ns,"011" after 750 ns;
+
+-- TEST OPERATOR DIV CHECK FLAGS AND DIV BY ZERO
+
+T_OP1   <= X"02" after 1 ns,X"08" after 200 ns,X"00" after 275 ns, X"FF" after 500 ns;
+T_OP2   <= X"04" after 1 ns,X"10" after 250 ns, X"00" after 400 ns;
+OPERATOR <= "100" after 1 ns;
+
 
 
 end Behavioral;

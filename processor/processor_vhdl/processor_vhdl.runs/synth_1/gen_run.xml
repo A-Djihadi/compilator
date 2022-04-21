@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1649758967">
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1650533484">
   <File Type="VDS-TIMING-PB" Name="ALU_timing_summary_synth.pb"/>
   <File Type="VDS-TIMINGSUMMARY" Name="ALU_timing_summary_synth.rpt"/>
   <File Type="RDS-DCP" Name="ALU.dcp"/>
@@ -15,6 +15,15 @@
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../../compilator/compilator.srcs/sources_1/new/ALU.vhd"/>
         <Attr Name="ImportTime" Val="1649318755"/>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/BANC_REGISTRE.vhd">
+      <FileInfo>
+        <Attr Name="AutoDisabled" Val="1"/>
+        <Attr Name="ImportPath" Val="$PPRDIR/../../../../compilator/compilator.srcs/sources_1/new/BANC_REGISTRE.vhd"/>
+        <Attr Name="ImportTime" Val="1649315701"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
@@ -64,15 +73,6 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/BANC_REGISTRE.vhd">
-      <FileInfo>
-        <Attr Name="AutoDisabled" Val="1"/>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../../compilator/compilator.srcs/sources_1/new/BANC_REGISTRE.vhd"/>
-        <Attr Name="ImportTime" Val="1649315701"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/ROM.vhd">
       <FileInfo>
         <Attr Name="AutoDisabled" Val="1"/>
@@ -94,7 +94,6 @@
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
       <Option Name="TopModule" Val="ALU"/>
-      <Option Name="TopAutoSet" Val="TRUE"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">

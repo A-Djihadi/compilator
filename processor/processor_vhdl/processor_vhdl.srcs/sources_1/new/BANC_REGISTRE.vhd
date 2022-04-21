@@ -43,9 +43,28 @@ entity BANC_REGISTRE is
            QB : out STD_LOGIC_VECTOR (7 downto 0));
 end BANC_REGISTRE;
 
+
 architecture Behavioral of BANC_REGISTRE is
 
-begin
+signal T_QA: STD_LOGIC_VECTOR (7 downto 0) :=(others => '0');
+signal T_QB: STD_LOGIC_VECTOR (7 downto 0) :=(others => '0');
 
+    begin 
+        process (CLK)
+        
+        begin
+            if(CLK'Event and CLK = '1')then
+                if(RST = '1')then
+                    T_QA <= X"00";
+                    T_QB <= X"00";
+                end if;
+                
+        end if;
+
+
+end process;
+
+    QA <= T_QA;
+    QB <= T_QB;
 
 end Behavioral;
