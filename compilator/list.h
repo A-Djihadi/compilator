@@ -38,4 +38,6 @@ int inlist(struct List list,char * nom,int* adress);
 
 //VERIFIER AVANT QUE PAS DANS LA LISTE SINON MECHANT MONSIEUR
 void insert(struct List* list, char * nom, int type);
+
+
 #endif

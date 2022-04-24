@@ -64,8 +64,13 @@ extern int yydebug;
     tSEMICOLON = 270,
     tPRINTF = 271,
     tINT = 272,
-    tNUM = 273,
-    tVARIABLE = 274
+    tELSE = 273,
+    tWHILE = 274,
+    tINF = 275,
+    tSUP = 276,
+    tNUM = 277,
+    tIF = 278,
+    tVARIABLE = 279
   };
 #endif
 /* Tokens.  */
@@ -84,17 +89,22 @@ extern int yydebug;
 #define tSEMICOLON 270
 #define tPRINTF 271
 #define tINT 272
-#define tNUM 273
-#define tVARIABLE 274
+#define tELSE 273
+#define tWHILE 274
+#define tINF 275
+#define tSUP 276
+#define tNUM 277
+#define tIF 278
+#define tVARIABLE 279
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 15 "compilo.y"
- int nb ; char *var;
+#line 8 "compilo.y"
+ int nb ; char *name;
 
-#line 98 "y.tab.h"
+#line 108 "y.tab.h"
 
 };
 typedef union YYSTYPE YYSTYPE;

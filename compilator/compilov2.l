@@ -9,7 +9,7 @@
 
 "main()" {return tMAIN ;}
 "if" {return tIF ;}
-"ELSE" {return tELSE ;}
+"else" {return tELSE ;}
 "while" {return tWHILE ;}
 "const" {return tCONST ;}
 "int" {return tINT;}
@@ -23,6 +23,8 @@
 "*" {return tMUL;}
 "/" {return tDIV;}
 "=" {return tEQL;}
+"<" {return tINF;}
+">" {return tSUP;}
 "," {return tCOMMA;}
 "\n" {;}
 ";" {return tSEMICOLON;}

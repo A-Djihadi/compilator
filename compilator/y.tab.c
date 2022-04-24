@@ -69,19 +69,12 @@
 #line 1 "compilo.y"
 
 #include "list.h"
+#include "compilo_to_asm.h"
 
-#define TAILLE_MAX_INT 10
 void yyerror(char *s);
-int cmptVariableTmp=0;
-
-// table des signes
-struct List notre_list;
-// fichier de sortie en assembleur
-FILE* fichier = NULL;
 
 
-
-#line 85 "y.tab.c"
+#line 78 "y.tab.c"
 
 # ifndef YY_CAST
 #  ifdef __cplusplus
@@ -144,8 +137,13 @@ extern int yydebug;
     tSEMICOLON = 270,
     tPRINTF = 271,
     tINT = 272,
-    tNUM = 273,
-    tVARIABLE = 274
+    tELSE = 273,
+    tWHILE = 274,
+    tINF = 275,
+    tSUP = 276,
+    tNUM = 277,
+    tIF = 278,
+    tVARIABLE = 279
   };
 #endif
 /* Tokens.  */
@@ -164,17 +162,22 @@ extern int yydebug;
 #define tSEMICOLON 270
 #define tPRINTF 271
 #define tINT 272
-#define tNUM 273
-#define tVARIABLE 274
+#define tELSE 273
+#define tWHILE 274
+#define tINF 275
+#define tSUP 276
+#define tNUM 277
+#define tIF 278
+#define tVARIABLE 279
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 15 "compilo.y"
- int nb ; char *var;
+#line 8 "compilo.y"
+ int nb ; char *name;
 
-#line 178 "y.tab.c"
+#line 181 "y.tab.c"
 
 };
 typedef union YYSTYPE YYSTYPE;
@@ -493,19 +496,19 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  4
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   53
+#define YYLAST   78
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  20
+#define YYNTOKENS  25
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  15
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  29
+#define YYNRULES  33
 /* YYNSTATES -- Number of states.  */
-#define YYNSTATES  59
+#define YYNSTATES  79
 
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   274
+#define YYMAXUTOK   279
 
 
 /* YYTRANSLATE(TOKEN-NUM) -- Symbol number corresponding to TOKEN-NUM
@@ -544,16 +547,17 @@ static const yytype_int8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
        5,     6,     7,     8,     9,    10,    11,    12,    13,    14,
-      15,    16,    17,    18,    19
+      15,    16,    17,    18,    19,    20,    21,    22,    23,    24
 };
 
 #if YYDEBUG
   /* YYRLINE[YYN] -- Source line where rule number YYN was defined.  */
-static const yytype_int16 yyrline[] =
+static const yytype_int8 yyrline[] =
 {
-       0,    26,    26,    25,    35,    36,    38,    39,    40,    41,
-      44,    54,    55,    58,    58,    86,    87,    88,    97,   109,
-     109,   133,   156,   157,   185,   212,   239,   265,   269,   279
+       0,    18,    18,    18,    20,    21,    23,    25,    25,    26,
+      27,    28,    29,    32,    33,    34,    37,    41,    42,    45,
+      47,    48,    49,    50,    54,    58,    60,    61,    62,    63,
+      64,    65,    68,    69
 };
 #endif
 
@@ -564,10 +568,11 @@ static const char *const yytname[] =
 {
   "$end", "error", "$undefined", "tMAIN", "tOPEN_BRKT", "tCLOSE_BRKT",
   "tCONST", "tADD", "tSUB", "tMUL", "tDIV", "tEQL", "tOPEN_PAR",
-  "tCLOSE_PAR", "tCOMMA", "tSEMICOLON", "tPRINTF", "tINT", "tNUM",
-  "tVARIABLE", "$accept", "prgm", "$@1", "Body", "Ligne", "Print",
-  "DeclConst", "DeclConstUniq", "$@2", "DeclInt", "DeclEtDefInt", "$@3",
-  "DefInt", "ExprArit", "VarOrNum", YY_NULLPTR
+  "tCLOSE_PAR", "tCOMMA", "tSEMICOLON", "tPRINTF", "tINT", "tELSE",
+  "tWHILE", "tINF", "tSUP", "tNUM", "tIF", "tVARIABLE", "$accept", "prgm",
+  "$@1", "Body", "Ligne", "$@2", "Condition", "Print", "DeclConst",
+  "DeclConstUniq", "DeclInt", "DeclEtDefInt", "DefInt", "ExprArit",
+  "VarOrNum", YY_NULLPTR
 };
 #endif
 
@@ -577,11 +582,12 @@ static const char *const yytname[] =
 static const yytype_int16 yytoknum[] =
 {
        0,   256,   257,   258,   259,   260,   261,   262,   263,   264,
-     265,   266,   267,   268,   269,   270,   271,   272,   273,   274
+     265,   266,   267,   268,   269,   270,   271,   272,   273,   274,
+     275,   276,   277,   278,   279
 };
 # endif
 
-#define YYPACT_NINF (-35)
+#define YYPACT_NINF (-24)
 
 #define yypact_value_is_default(Yyn) \
   ((Yyn) == YYPACT_NINF)
@@ -595,12 +601,14 @@ static const yytype_int16 yytoknum[] =
      STATE-NUM.  */
 static const yytype_int8 yypact[] =
 {
-     -13,    15,    29,   -35,   -35,    37,     0,    23,    31,    25,
-      34,    41,     0,   -35,   -35,   -35,   -35,   -12,    28,    -4,
-     -35,    22,   -11,   -35,   -35,    38,    23,   -35,    35,    25,
-     -35,    39,    25,   -35,   -11,   -35,   -35,    13,   -35,   -11,
-     -35,    36,   -35,   -11,   -35,    17,   -11,   -11,   -11,   -11,
-     -35,    24,   -35,    24,   -35,    30,    30,   -35,   -35
+      -6,    18,    24,   -24,   -24,    31,    -1,    32,    47,    37,
+      48,    51,    59,    -1,   -24,   -24,    54,   -24,    -5,    42,
+      -8,   -24,    12,   -10,   -10,   -24,   -24,   -10,    32,   -24,
+      55,   -10,    37,   -24,    37,   -24,   -10,   -24,   -24,    56,
+      29,   -24,    10,    44,   -24,    52,    44,   -24,   -24,    34,
+      66,   -10,   -10,   -10,   -10,   -10,   -10,   -10,   -24,   -24,
+     -24,    -1,    67,    36,    36,   -24,   -24,    44,    44,    44,
+      68,    -1,    57,    69,    72,   -24,    -1,    73,   -24
 };
 
   /* YYDEFACT[STATE-NUM] -- Default reduction number in state STATE-NUM.
@@ -609,25 +617,27 @@ static const yytype_int8 yypact[] =
 static const yytype_int8 yydefact[] =
 {
        0,     0,     0,     2,     1,     0,     5,     0,     0,     0,
-       0,     0,     5,     9,     8,    13,     6,     0,     0,    19,
-       7,     0,     0,     3,     4,     0,     0,    12,     0,     0,
-      18,     0,     0,    16,     0,    29,    28,     0,    22,     0,
-      11,     0,    17,     0,    15,     0,     0,     0,     0,     0,
-      21,    14,    10,    20,    27,    26,    25,    23,    24
+       0,     0,     0,     5,    12,    11,     0,     9,     0,     0,
+       0,    10,     0,     0,     0,     3,     4,     0,     0,    18,
+       0,     0,     0,    23,     0,    21,     0,    33,    32,     0,
+       0,    26,     0,    19,    17,     0,    24,    22,    20,     0,
+       0,     0,     0,     0,     0,     0,     0,     0,    25,    16,
+      31,     5,     0,    30,    29,    27,    28,    15,    13,    14,
+       0,     5,     0,     0,     0,     8,     5,     0,     6
 };
 
   /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-     -35,   -35,   -35,    40,   -35,   -35,    27,   -35,   -35,     6,
-     -35,   -35,   -35,   -34,   -35
+     -24,   -24,   -24,   -13,   -24,   -24,   -24,   -24,    49,   -24,
+      23,   -24,   -24,   -23,   -24
 };
 
   /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     2,     5,    11,    12,    13,    16,    17,    25,    20,
-      21,    31,    14,    37,    38
+      -1,     2,     5,    12,    13,    62,    39,    14,    17,    18,
+      21,    22,    15,    40,    41
 };
 
   /* YYTABLE[YYPACT[STATE-NUM]] -- What to do in state STATE-NUM.  If
@@ -635,50 +645,58 @@ static const yytype_int8 yydefgoto[] =
      number is the opposite.  If YYTABLE_NINF, syntax error.  */
 static const yytype_int8 yytable[] =
 {
-      45,    34,    26,    27,     1,    51,     7,    35,    36,    53,
-      29,    30,    55,    56,    57,    58,     8,     9,     3,    10,
-      46,    47,    48,    49,    46,    47,    48,    49,    50,     4,
-      54,    46,    47,    48,    49,    42,    32,    33,    44,    48,
-      49,     6,    15,    18,    19,    22,    23,    28,    41,    39,
-      43,    52,    24,    40
+      26,    42,    36,    31,    43,     7,    32,    33,    46,    28,
+      29,     1,    37,    49,    38,     8,     9,    51,    52,    53,
+      54,     3,    10,    11,     4,    58,    34,    35,    63,    64,
+      65,    66,    67,    68,    69,     6,    51,    52,    53,    54,
+      55,    51,    52,    53,    54,    53,    54,    60,    70,    56,
+      57,    51,    52,    53,    54,    47,    16,    48,    73,    19,
+      23,    20,    24,    77,    25,    27,    30,    59,    45,    50,
+      61,    71,     0,    72,    75,    74,    76,    44,    78
 };
 
 static const yytype_int8 yycheck[] =
 {
-      34,    12,    14,    15,    17,    39,     6,    18,    19,    43,
-      14,    15,    46,    47,    48,    49,    16,    17,     3,    19,
-       7,     8,     9,    10,     7,     8,     9,    10,    15,     0,
-      13,     7,     8,     9,    10,    29,    14,    15,    32,     9,
-      10,     4,    19,    12,    19,    11,     5,    19,    13,    11,
-      11,    15,    12,    26
+      13,    24,    12,    11,    27,     6,    14,    15,    31,    14,
+      15,    17,    22,    36,    24,    16,    17,     7,     8,     9,
+      10,     3,    23,    24,     0,    15,    14,    15,    51,    52,
+      53,    54,    55,    56,    57,     4,     7,     8,     9,    10,
+      11,     7,     8,     9,    10,     9,    10,    13,    61,    20,
+      21,     7,     8,     9,    10,    32,    24,    34,    71,    12,
+      12,    24,    11,    76,     5,    11,    24,    15,    13,    13,
+       4,     4,    -1,     5,     5,    18,     4,    28,     5
 };
 
   /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
      symbol of state STATE-NUM.  */
 static const yytype_int8 yystos[] =
 {
-       0,    17,    21,     3,     0,    22,     4,     6,    16,    17,
-      19,    23,    24,    25,    32,    19,    26,    27,    12,    19,
-      29,    30,    11,     5,    23,    28,    14,    15,    19,    14,
-      15,    31,    14,    15,    12,    18,    19,    33,    34,    11,
-      26,    13,    29,    11,    29,    33,     7,     8,     9,    10,
-      15,    33,    15,    33,    13,    33,    33,    33,    33
+       0,    17,    26,     3,     0,    27,     4,     6,    16,    17,
+      23,    24,    28,    29,    32,    37,    24,    33,    34,    12,
+      24,    35,    36,    12,    11,     5,    28,    11,    14,    15,
+      24,    11,    14,    15,    14,    15,    12,    22,    24,    31,
+      38,    39,    38,    38,    33,    13,    38,    35,    35,    38,
+      13,     7,     8,     9,    10,    11,    20,    21,    15,    15,
+      13,     4,    30,    38,    38,    38,    38,    38,    38,    38,
+      28,     4,     5,    28,    18,     5,     4,    28,     5
 };
 
   /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_int8 yyr1[] =
 {
-       0,    20,    22,    21,    23,    23,    24,    24,    24,    24,
-      25,    26,    26,    28,    27,    29,    29,    29,    29,    31,
-      30,    32,    33,    33,    33,    33,    33,    33,    34,    34
+       0,    25,    27,    26,    28,    28,    29,    30,    29,    29,
+      29,    29,    29,    31,    31,    31,    32,    33,    33,    34,
+      35,    35,    35,    35,    36,    37,    38,    38,    38,    38,
+      38,    38,    39,    39
 };
 
   /* YYR2[YYN] -- Number of symbols on the right hand side of rule YYN.  */
 static const yytype_int8 yyr2[] =
 {
-       0,     2,     0,     6,     2,     0,     2,     2,     1,     1,
-       5,     3,     2,     0,     4,     3,     2,     3,     2,     0,
-       4,     4,     1,     3,     3,     3,     3,     3,     1,     1
+       0,     2,     0,     6,     2,     0,    11,     0,     8,     2,
+       2,     1,     1,     3,     3,     3,     5,     3,     2,     3,
+       3,     2,     3,     2,     3,     4,     1,     3,     3,     3,
+       3,     3,     1,     1
 };
 
 
@@ -1374,320 +1392,139 @@ yyreduce:
   switch (yyn)
     {
   case 2:
-#line 26 "compilo.y"
-        { fichier = fopen("compilateur_asm.txt", "w");
-          notre_list.addr_max= 0;
-        }
-#line 1382 "y.tab.c"
+#line 18 "compilo.y"
+                 {init();}
+#line 1398 "y.tab.c"
     break;
 
   case 3:
-#line 30 "compilo.y"
-        { print_list(&notre_list);
-          fclose(fichier);
-        }
-#line 1390 "y.tab.c"
+#line 18 "compilo.y"
+                                                      {/*TODO: remove print*/  patch(); patch(); close();}
+#line 1404 "y.tab.c"
     break;
 
-  case 10:
-#line 44 "compilo.y"
-                                                        {
-        int test,adress;
-        if((test = inlist(notre_list,(yyvsp[-2].var),&adress)) == 0){      
-          printf("Variable does not exist\n");
-        }
-        fprintf(fichier,"PRI %d\n", adress);
-      }
-#line 1402 "y.tab.c"
+  case 6:
+#line 23 "compilo.y"
+                                                                                                        {printf("ifelse\n");}
+#line 1410 "y.tab.c"
+    break;
+
+  case 7:
+#line 25 "compilo.y"
+                                          {(yyvsp[-3].nb)=print_JMF((yyvsp[-1].name));}
+#line 1416 "y.tab.c"
+    break;
+
+  case 8:
+#line 25 "compilo.y"
+                                                                                         {to_patch((yyvsp[-7].nb),1);}
+#line 1422 "y.tab.c"
     break;
 
   case 13:
-#line 58 "compilo.y"
-                          {
-                int test,adress;
-                if((test = inlist(notre_list,(yyvsp[0].var),&adress)) == 0){      
-                insert(&notre_list,(yyvsp[0].var),2);
-                // insert in the list with adress being the max adress
-
-                }else{
-                printf("Aleardy declared const\n");
-                //throw
-                }   
-              }
-#line 1418 "y.tab.c"
+#line 32 "compilo.y"
+                                  {(yyval.name) = printInf((yyvsp[-2].name),(yyvsp[0].name));}
+#line 1428 "y.tab.c"
     break;
 
   case 14:
-#line 69 "compilo.y"
-            { //TEST SI VARIABLE DECLAREE
-              int test,adress, adressoperand;
-              //recuperer adress
-              inlist(notre_list,(yyvsp[-3].var),&adress);
-              if((test = inlist(notre_list,(yyvsp[0].var),&adressoperand)) == 0){   
-                printf("Not supposed to happen\n");
-              }else if(test == 3){
-                //remove tmp from list
-                supprlast(&notre_list);
-                cmptVariableTmp--;
-              }
-
-              fprintf(fichier,"COP %d %d\n", adress, adressoperand);
-              
-            }
-#line 1438 "y.tab.c"
+#line 33 "compilo.y"
+                                 {(yyval.name) = printSup((yyvsp[-2].name),(yyvsp[0].name));}
+#line 1434 "y.tab.c"
     break;
 
-  case 17:
-#line 89 "compilo.y"
-           { //TEST SI VARIABLE DECLAREE
-              int adress;
-              if(inlist(notre_list,(yyvsp[-2].var),&adress) == 0){      
-                insert(&notre_list,(yyvsp[-2].var),4);
-              }else{
-                printf("already declared\n");
-              }
-            }
-#line 1451 "y.tab.c"
+  case 15:
+#line 34 "compilo.y"
+                                 {(yyval.name) = printEql((yyvsp[-2].name),(yyvsp[0].name));}
+#line 1440 "y.tab.c"
     break;
 
-  case 18:
-#line 98 "compilo.y"
-           { //TEST SI VARIABLE DECLAREE
-              int adress;
-              if(inlist(notre_list,(yyvsp[-1].var),&adress) == 0){      
-                insert(&notre_list,(yyvsp[-1].var),4);
-              }else{
-                printf("already declared\n");
-              }
-            }
-#line 1464 "y.tab.c"
+  case 16:
+#line 37 "compilo.y"
+                                                        {printIt((yyvsp[-2].name));}
+#line 1446 "y.tab.c"
     break;
 
   case 19:
-#line 109 "compilo.y"
-                         {
-                int test,adress;
-                if((test = inlist(notre_list,(yyvsp[0].var),&adress)) == 0){      
-                  insert(&notre_list,(yyvsp[0].var),1);
-                  // insert in the list with adress being the max adress
-                  adress = notre_list.addr_max - 1;
-                }
-              }
-#line 1477 "y.tab.c"
-    break;
-
-  case 20:
-#line 118 "compilo.y"
-            { //TEST SI VARIABLE DECLAREE
-              int adressoperand,test,adress;
-              inlist(notre_list,(yyvsp[-3].var),&adress);
-
-              if((test = inlist(notre_list,(yyvsp[0].var),&adressoperand)) == 0){      
-                printf("Not supposed to happen\n");
-              }else if(test == 3){
-                //remove tmp from list
-                supprlast(&notre_list);
-                cmptVariableTmp--;
-              }
-              fprintf(fichier,"COP %d %d\n", adress, adressoperand);
-            }
-#line 1495 "y.tab.c"
-    break;
-
-  case 21:
-#line 134 "compilo.y"
-          { //TEST SI VARIABLE DECLAREE
-
-            int adressoperand,test,adress;
-            if((test = inlist(notre_list,(yyvsp[-1].var),&adressoperand)) == 0){      
-              printf("Not supposed to happen\n");
-            }else if(test == 3){
-              //remove tmp from list
-              supprlast(&notre_list);
-             cmptVariableTmp--;
-            }
-
-            if((test = inlist(notre_list,(yyvsp[-3].var),&adress)) == 0){      
-              // errore not supposed to happen
-              printf("Not declared int\n");
-            }else if(test == 2){
-              // errore not supposed to happen
-              printf("Variable declared as const, cannot be changed\n");
-            }
-          fprintf(fichier,"COP %d %d\n", adress, adressoperand);
-          }
-#line 1520 "y.tab.c"
+#line 45 "compilo.y"
+                                        {DeclConst((yyvsp[-2].name),(yyvsp[0].name));}
+#line 1452 "y.tab.c"
     break;
 
   case 22:
-#line 156 "compilo.y"
-                   {(yyval.var) = strdup((yyvsp[0].var));}
-#line 1526 "y.tab.c"
+#line 49 "compilo.y"
+                                    {checkDefInt((yyvsp[-2].name));}
+#line 1458 "y.tab.c"
     break;
 
   case 23:
-#line 157 "compilo.y"
-                                 {
-          int adressoperand1,adressoperand2,adress_result,test;
-          if((test = inlist(notre_list,(yyvsp[0].var),&adressoperand2)) == 0){      
-            printf("Not supposed to happen\n");
-          }else if(test == 3){
-            //remove tmp from list
-            supprlast(&notre_list);
-            cmptVariableTmp--;
-          }
-
-          if((test = inlist(notre_list,(yyvsp[-2].var),&adressoperand1)) == 0){      
-            printf("Not supposed to happen\n");
-          }else if(test == 3){
-            //remove tmp from list
-            supprlast(&notre_list);
-            cmptVariableTmp--;
-          }
-          //add tmp to list
-          char nom[TAILLE_MAX_INT+4]; 
-          cmptVariableTmp++; 
-          sprintf(nom, "%dTemp", cmptVariableTmp);
-
-          insert(&notre_list,nom,3);
-          adress_result = notre_list.addr_max - 1;
-          fprintf(fichier,"MUL %d %d %d\n",adress_result, adressoperand1, adressoperand2);
-          (yyval.var) = strdup(nom);
-        }
-#line 1558 "y.tab.c"
+#line 50 "compilo.y"
+                               {checkDefInt((yyvsp[-1].name));}
+#line 1464 "y.tab.c"
     break;
 
   case 24:
-#line 185 "compilo.y"
-                                 {
-          int adressoperand1,adressoperand2,adress_result,test;
-          if((test = inlist(notre_list,(yyvsp[0].var),&adressoperand2)) == 0){      
-            printf("Not supposed to happen\n");
-          }else if(test == 3){
-            //remove tmp from list
-            supprlast(&notre_list);
-            cmptVariableTmp--;
-          }
-
-          if((test = inlist(notre_list,(yyvsp[-2].var),&adressoperand1)) == 0){      
-            printf("Not supposed to happen\n");
-          }else if(test == 3){
-            //remove tmp from list
-            supprlast(&notre_list);
-            cmptVariableTmp--;
-          }
-          //add tmp to list
-          char nom[TAILLE_MAX_INT+4]; 
-          cmptVariableTmp++; 
-          sprintf(nom, "%dTemp", cmptVariableTmp);
-          insert(&notre_list,nom,3);
-          adress_result = notre_list.addr_max - 1;
-          fprintf(fichier,"DIV %d %d %d\n",adress_result, adressoperand1, adressoperand2);
-          (yyval.var) = strdup(nom);
-        }
-#line 1589 "y.tab.c"
+#line 54 "compilo.y"
+                                       {DeclInt((yyvsp[-2].name),(yyvsp[0].name));}
+#line 1470 "y.tab.c"
     break;
 
   case 25:
-#line 212 "compilo.y"
-                                 {
-          int adressoperand1,adressoperand2,adress_result,test;
-          if((test = inlist(notre_list,(yyvsp[0].var),&adressoperand2)) == 0){      
-            printf("Not supposed to happen\n");
-          }else if(test == 3){
-            //remove tmp from list
-            supprlast(&notre_list);
-            cmptVariableTmp--;
-          }
-
-          if((test = inlist(notre_list,(yyvsp[-2].var),&adressoperand1)) == 0){      
-            printf("Not supposed to happen\n");
-          }else if(test == 3){
-            //remove tmp from list
-            supprlast(&notre_list);
-            cmptVariableTmp--;
-          }
-          //add tmp to list
-          char nom[TAILLE_MAX_INT+4]; 
-          cmptVariableTmp++; 
-          sprintf(nom, "%dTemp", cmptVariableTmp);
-          insert(&notre_list,nom,3);
-          adress_result = notre_list.addr_max - 1;
-          fprintf(fichier,"SOU %d %d %d\n",adress_result, adressoperand1, adressoperand2);
-          (yyval.var) = strdup(nom);
-        }
-#line 1620 "y.tab.c"
+#line 58 "compilo.y"
+                                            {DefInt((yyvsp[-3].name),(yyvsp[-1].name));}
+#line 1476 "y.tab.c"
     break;
 
   case 26:
-#line 239 "compilo.y"
-                                 {
-          int adressoperand1,adressoperand2,adress_result,test;
-          if((test = inlist(notre_list,(yyvsp[0].var),&adressoperand2)) == 0){      
-            printf("Not supposed to happen\n");
-          }else if(test == 3){
-            //remove tmp from list
-            supprlast(&notre_list);
-            cmptVariableTmp--;
-          }
-
-          if((test = inlist(notre_list,(yyvsp[-2].var),&adressoperand1)) == 0){      
-            printf("Not supposed to happen\n");
-          }else if(test == 3){
-            //remove tmp from list
-            supprlast(&notre_list);
-            cmptVariableTmp--;
-          }
-          //add tmp to list
-          char nom[TAILLE_MAX_INT+4];
-          cmptVariableTmp++; 
-          sprintf(nom, "%dTemp", cmptVariableTmp);
-          insert(&notre_list,nom,3);
-          adress_result = notre_list.addr_max - 1;
-          fprintf(fichier,"ADD %d %d %d\n",adress_result, adressoperand1, adressoperand2);
-          (yyval.var) = strdup(nom);
-        }
-#line 1651 "y.tab.c"
+#line 60 "compilo.y"
+                   {(yyval.name) = strdup((yyvsp[0].name));}
+#line 1482 "y.tab.c"
     break;
 
   case 27:
-#line 266 "compilo.y"
-        {(yyval.var) = (yyvsp[-1].var);}
-#line 1657 "y.tab.c"
+#line 61 "compilo.y"
+                                 {(yyval.name) = strdup(multiply((yyvsp[-2].name),(yyvsp[0].name)));}
+#line 1488 "y.tab.c"
     break;
 
   case 28:
-#line 269 "compilo.y"
-                    {
-          int adress,test; 
-          if((test = inlist(notre_list,(yyvsp[0].var),&adress)) == 0){      
-            printf("Not declared variable\n");
-          }else if(test == 4){
-            printf("Integer not instanciated\n");
-          }
-            //TODO: verif malloc?
-            (yyval.var)=(yyvsp[0].var);
-          }
-#line 1672 "y.tab.c"
+#line 62 "compilo.y"
+                                 {(yyval.name) = strdup(divide((yyvsp[-2].name),(yyvsp[0].name)));}
+#line 1494 "y.tab.c"
     break;
 
   case 29:
-#line 279 "compilo.y"
-               { 
-            char nom[TAILLE_MAX_INT+4]; 
-            int adress;
-            cmptVariableTmp++; 
-            sprintf(nom, "%dTemp", cmptVariableTmp);
-            insert(&notre_list,nom,3);
-            adress = notre_list.addr_max - 1;
-            fprintf(fichier,"AFC %d %d\n",adress, (yyvsp[0].nb));
-            (yyval.var) = nom;
-          }
-#line 1687 "y.tab.c"
+#line 63 "compilo.y"
+                                 {(yyval.name) = strdup(soustract((yyvsp[-2].name),(yyvsp[0].name)));}
+#line 1500 "y.tab.c"
+    break;
+
+  case 30:
+#line 64 "compilo.y"
+                                 {(yyval.name) = strdup(add((yyvsp[-2].name),(yyvsp[0].name)));}
+#line 1506 "y.tab.c"
+    break;
+
+  case 31:
+#line 65 "compilo.y"
+                                        {(yyval.name) = (yyvsp[-1].name);}
+#line 1512 "y.tab.c"
+    break;
+
+  case 32:
+#line 68 "compilo.y"
+                    {testVar((yyvsp[0].name));(yyval.name)=(yyvsp[0].name);}
+#line 1518 "y.tab.c"
+    break;
+
+  case 33:
+#line 69 "compilo.y"
+               {(yyval.name) = affectation((yyvsp[0].nb));}
+#line 1524 "y.tab.c"
     break;
 
 
-#line 1691 "y.tab.c"
+#line 1528 "y.tab.c"
 
       default: break;
     }
@@ -1919,9 +1756,9 @@ yyreturn:
 #endif
   return yyresult;
 }
-#line 292 "compilo.y"
+#line 73 "compilo.y"
 
-void yyerror(char *s) { fprintf(stderr, "%s\n", s); }
+void yyerror(char *s) {fprintf(stderr, "%s\n", s); }
 int main(void) {
   printf("COMPILATEUUUUUUR\n"); // yydebug=1;
 

@@ -16,6 +16,8 @@
 "*" {printf("tMUL\n");}
 "/" {printf("tDIV\n");}
 "=" {printf("tEQL\n");}
+"<" {printf("tINF\n");}
+">" {printf("tSUP\n");}
 "(" {printf("tOPEN_PAR\n");}
 ")" {printf("tCLOSE_PAR\n");}
 [ \t]+ {printf("tSPACE\n");}

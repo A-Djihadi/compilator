@@ -5,7 +5,7 @@ BIN=compilons
 CC=gcc
 CFLAGS=-Wall -g
 
-OBJ=y.tab.o lex.yy.o main.o list.o
+OBJ=y.tab.o lex.yy.o main.o list.o compilo_to_asm.o
 
 
 all: $(BIN)

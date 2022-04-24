@@ -1,7 +1,6 @@
 int main(){
 
     int toto = 5;
-
     const variableName = 54;
     const M4Trix = 42;
     int michel = 10, michelle =12;
@@ -9,4 +8,5 @@ int main(){
     michel = toto + 5;
     toto = 5* toto + 5 *6   ;
     printf(toto);
+    if(1=1){}else{}
 }
