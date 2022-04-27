@@ -1,10 +1,17 @@
 #include "compilo_to_asm.h"
 #include "list.h"
+#include <stdlib.h>
+#include <stdio.h>
+#include <string.h>
 
+#define TAILLE_MAX_INT 10
+#define MAX_NB_JUMP 200
+#define SIZE_OF_LLINE 512
 // table des signes
 struct List notre_list;
 // fichier de sortie en assembleur
 FILE* fichier_tot = NULL;
+
 
 //nommbre de variablees temporaires utilisées actuellemenet
 int nbrVarTemp=0;
@@ -12,8 +19,11 @@ int nbrVarTemp=0;
 int nbr_lignes = 0;
 
 //save of the patches
-struct pair labels[MAX_IF_INSIDE];
+struct pair labels[MAX_NB_JUMP];
 int nbr_ifs=0;
+
+int supprline = 0;
+
 
 int addTmp(){
      char* nom=malloc(TAILLE_MAX_INT+4 * sizeof(char));  
@@ -55,20 +65,118 @@ int print_JMF(char* nom){
     //save current line where to print later
     nbr_lignes++;
     fprintf(fichier_tot,"JMF %d \n",adressoperand);
-    return nbr_lignes;
+
+    if(nbr_ifs<MAX_NB_JUMP){
+
+        labels[nbr_ifs].from= nbr_lignes;
+        nbr_ifs++;
+        return nbr_ifs-1;
+
+    }
+    return -1;
 }
 
-void to_patch(int from,int to_plus){
-    if(nbr_ifs<MAX_IF_INSIDE){
-    labels[nbr_ifs].to = nbr_lignes + to_plus;
-    labels[nbr_ifs].from= from;
-    nbr_ifs++;
+int if_toPatch(int nb_if){
+
+    nbr_lignes++;
+    fprintf(fichier_tot,"JMP \n");
+    labels[nb_if].to = nbr_lignes + 1;
+
+    if(nbr_ifs<MAX_NB_JUMP){
+        labels[nbr_ifs].from = nbr_lignes;
+        nbr_ifs++;
+        return nbr_ifs-1;
     }
+    return -1;
+}
+
+void else_toPatch(int nb_if1, int nb_if2,int try_me){
+    if(try_me == 1){
+        labels[nb_if2].to = nbr_lignes + 1;
+        labels[nb_if2].type = 1;
+    }else{
+        labels[nb_if2].type = 2;   
+        labels[nb_if1].to--;
+    }
+    labels[nb_if1].type = 1;
+}
+
+int save_while(){
+    return nbr_lignes+1;
+}
+
+int print_while(char* nom){
+    int adressoperand= get_address(nom);
+    //add the line later 
+    //save current line where to print later
+    nbr_lignes++;
+    fprintf(fichier_tot,"JMF %d \n",adressoperand);
+    if(nbr_ifs<MAX_NB_JUMP){
+        labels[nbr_ifs].from= nbr_lignes;
+        nbr_ifs++;
+        return nbr_ifs-1;
+    }
+    return -1;
+}
+
+void while_toPatch(int nb_if, int line){
+    nbr_lignes++;
+    fprintf(fichier_tot,"JMP %d\n",line);
+    labels[nb_if].to = nbr_lignes + 1;
+    labels[nb_if].type = 1;
+
 }
 
 void patch(){
-    printf("hello world");
+    //
+    if(nbr_ifs > 0){
+        fclose(fichier_tot);
+        rename("compilateur_asm.txt", "tmp.txt");
+        fichier_tot = fopen("compilateur_asm.txt", "w");
+        FILE *fichier_tmp = fopen("tmp.txt", "r");
+        int line = 0;
+        char read_line[SIZE_OF_LLINE]; 
+        char write_line[SIZE_OF_LLINE+4]; 
+
+        for(int i = 0; i < nbr_ifs ; i++){
+            while(line < labels[i].from - 1){
+                fgets( read_line, sizeof read_line, fichier_tmp);
+                strcpy(write_line, read_line);
+                fprintf(fichier_tot , write_line);
+                line++;
+            }
+
+            printf("type : %d\n",labels[i].type);
+            if(labels[i].type == 1){
+                //just if 
+                fgets( read_line, sizeof read_line, fichier_tmp);
+                int backn = '\n';
+                char* sindex = strchr(read_line, backn);
+                *sindex = '\0';
+                sprintf(write_line,"%s%d\n",read_line,labels[i].to-supprline);
+                fprintf (fichier_tot , write_line);
+                line++;
+            }else if(labels[i].type == 2){
+                //if else
+                fgets( read_line, sizeof read_line, fichier_tmp);
+                supprline++;
+                line++;
+            }
+            printf(read_line);
+            printf("\n");
+
+
+        }
+
+        while ( fgets( read_line, sizeof read_line, fichier_tmp) != NULL ){
+            strcpy(write_line, read_line);
+            fprintf (fichier_tot , write_line);
+        }
+        remove("tmp.txt");
+        
+    }
 }
+
 
 
 char* printInf(char *name1, char *name2){
@@ -128,10 +236,6 @@ void printIt(char *name){
     fprintf(fichier_tot,"PRI %d\n", adress);
 }
 
-void fonction1(){
-    
-}
-
 void DeclConst(char *name1, char *name2){
     int test,adress,adressoperand;
     adressoperand = get_address(name2);
@@ -160,6 +264,7 @@ void checkDefInt(char *name){
         printf("already declared\n");
     }
 }
+
 
 void DeclInt(char *name1, char *name2){
     int adress,adressoperand;

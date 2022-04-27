@@ -1,8 +1,10 @@
 %{
 #include <stdlib.h>
 #include <stdio.h>
+#include <string.h>
 #include "y.tab.h"
 %}
+
 
 %option noyywrap
 %%
@@ -13,7 +15,7 @@
 "while" {return tWHILE ;}
 "const" {return tCONST ;}
 "int" {return tINT;}
-"printf" {return tPRINTF;}
+"printf" {return tPRINTF;} 
 "{" {return tOPEN_BRKT ;}
 "}" {return tCLOSE_BRKT ;}
 "(" {return tOPEN_PAR;}
@@ -35,8 +37,8 @@
     return tNUM;}
 
 [a-zA-Z][a-zA-Z0-9\_]* {
-    yylval.var=malloc(yyleng);
-    strcpy(yylval.var,yytext);
+    yylval.name=malloc(yyleng);
+    strcpy(yylval.name,yytext);
     return tVARIABLE;}
 
 %%

@@ -65,11 +65,11 @@ extern int yydebug;
     tPRINTF = 271,
     tINT = 272,
     tELSE = 273,
-    tWHILE = 274,
-    tINF = 275,
-    tSUP = 276,
-    tNUM = 277,
-    tIF = 278,
+    tINF = 274,
+    tSUP = 275,
+    tNUM = 276,
+    tIF = 277,
+    tWHILE = 278,
     tVARIABLE = 279
   };
 #endif
@@ -90,19 +90,19 @@ extern int yydebug;
 #define tPRINTF 271
 #define tINT 272
 #define tELSE 273
-#define tWHILE 274
-#define tINF 275
-#define tSUP 276
-#define tNUM 277
-#define tIF 278
+#define tINF 274
+#define tSUP 275
+#define tNUM 276
+#define tIF 277
+#define tWHILE 278
 #define tVARIABLE 279
 
 /* Value type.  */
 #if ! defined YYSTYPE && ! defined YYSTYPE_IS_DECLARED
 union YYSTYPE
 {
-#line 8 "compilo.y"
- int nb ; char *name;
+#line 13 "compilo.y"
+ int nb ; char *name; struct fak *two;
 
 #line 108 "y.tab.h"
 

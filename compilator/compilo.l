@@ -5,7 +5,7 @@
 
 %option noyywrap
 %%
-
+ 
 "main()" {printf("tMAIN \n");}
 "{" {printf("tOPEN_BRKT \n");}
 "}" {printf("tCLOSE_BRKT \n");}}
