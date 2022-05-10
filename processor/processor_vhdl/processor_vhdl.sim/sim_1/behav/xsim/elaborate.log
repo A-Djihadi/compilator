@@ -1,6 +1,6 @@
 Vivado Simulator 2018.2
 Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
-Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 85fdfe322208446db5d9005212aa50eb --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot ALU_SIMU_behav xil_defaultlib.ALU_SIMU -log elaborate.log 
+Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 85fdfe322208446db5d9005212aa50eb --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot REGISTRE_SIMU_behav xil_defaultlib.REGISTRE_SIMU -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -10,7 +10,9 @@ Time Resolution for simulation is 1ps
 Compiling package std.standard
 Compiling package std.textio
 Compiling package ieee.std_logic_1164
+Compiling package ieee.std_logic_arith
+Compiling package ieee.std_logic_unsigned
 Compiling package ieee.numeric_std
-Compiling architecture behavioral of entity xil_defaultlib.ALU [alu_default]
-Compiling architecture behavioral of entity xil_defaultlib.alu_simu
-Built simulation snapshot ALU_SIMU_behav
+Compiling architecture behavioral of entity xil_defaultlib.BANC_REGISTRE [banc_registre_default]
+Compiling architecture behavioral of entity xil_defaultlib.registre_simu
+Built simulation snapshot REGISTRE_SIMU_behav

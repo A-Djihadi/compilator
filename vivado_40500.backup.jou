@@ -1,0 +1,60 @@
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu Apr 21 11:20:06 2022
+# Process ID: 40500
+# Current directory: /home/ahamdy/Bureau/prog_system
+# Command line: vivado
+# Log file: /home/ahamdy/Bureau/prog_system/vivado.log
+# Journal file: /home/ahamdy/Bureau/prog_system/vivado.jou
+#-----------------------------------------------------------
+start_gui
+open_project /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.xpr
+update_compile_order -fileset sources_1
+reset_run synth_1
+launch_runs synth_1 -jobs 6
+wait_on_run synth_1
+launch_runs impl_1 -jobs 6
+wait_on_run impl_1
+launch_simulation
+source ALU_SIMU.tcl
+close_sim
+launch_simulation
+source ALU_SIMU.tcl
+close_sim
+launch_simulation
+source ALU_SIMU.tcl
+close_sim
+launch_simulation
+source ALU_SIMU.tcl
+close_sim
+launch_simulation
+source ALU_SIMU.tcl
+close_sim
+launch_simulation
+source ALU_SIMU.tcl
+close_sim
+launch_simulation
+source ALU_SIMU.tcl
+close_sim
+launch_simulation
+source ALU_SIMU.tcl
+reset_run synth_1
+launch_runs synth_1 -jobs 6
+wait_on_run synth_1
+close_sim
+launch_simulation
+source ALU_SIMU.tcl
+close_sim
+launch_simulation
+source ALU_SIMU.tcl
+# Disabling source management mode.  This is to allow the top design properties to be set without GUI intervention.
+set_property source_mgmt_mode None [current_project]
+set_property top BANC_REGISTRE [current_fileset]
+# Re-enabling previously disabled source management mode.
+set_property source_mgmt_mode All [current_project]
+update_compile_order -fileset sources_1
+update_compile_order -fileset sources_1
+set_property source_mgmt_mode DisplayOnly [current_project]
+close_sim

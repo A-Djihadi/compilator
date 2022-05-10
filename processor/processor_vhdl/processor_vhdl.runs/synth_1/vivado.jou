@@ -2,11 +2,11 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Thu Apr 21 11:31:25 2022
-# Process ID: 47288
+# Start of session at: Tue May 10 11:15:50 2022
+# Process ID: 76657
 # Current directory: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
-# Command line: vivado -log ALU.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source ALU.tcl
-# Log file: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/ALU.vds
+# Command line: vivado -log BANC_REGISTRE.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source BANC_REGISTRE.tcl
+# Log file: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/BANC_REGISTRE.vds
 # Journal file: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/vivado.jou
 #-----------------------------------------------------------
-source ALU.tcl -notrace
+source BANC_REGISTRE.tcl -notrace

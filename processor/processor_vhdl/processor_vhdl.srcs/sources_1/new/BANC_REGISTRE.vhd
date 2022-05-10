@@ -21,6 +21,8 @@
 
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.NUMERIC_STD.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -45,26 +47,28 @@ end BANC_REGISTRE;
 
 
 architecture Behavioral of BANC_REGISTRE is
-
-signal T_QA: STD_LOGIC_VECTOR (7 downto 0) :=(others => '0');
-signal T_QB: STD_LOGIC_VECTOR (7 downto 0) :=(others => '0');
-
-    begin 
-        process (CLK)
-        
-        begin
-            if(CLK'Event and CLK = '1')then
-                if(RST = '1')then
-                    T_QA <= X"00";
-                    T_QB <= X"00";
+    type Registers is array (0 to 15) of STD_LOGIC_VECTOR (7 downto 0);
+    signal REG : Registers;
+    
+    
+begin 
+    process (CLK)
+    
+    begin
+        if(CLK'Event and CLK = '1')then
+            if RST = '1' then
+                REG <= (others => X"00");
+            else
+                if W = '1' then                    --Permission Write
+                    REG(to_integer(unsigned(addr_W))) <= DATA; --On écrit la DATA dans l'adresse de W
                 end if;
-                
+            end if;
+            
         end if;
 
 
-end process;
-
-    QA <= T_QA;
-    QB <= T_QB;
-
+    end process;
+    QA <= REG(to_integer(unsigned(addr_A)))    when (W='0' or addr_A /= addr_W)  else DATA; 
+    QB <= REG(to_integer(unsigned(addr_B)))    when (W='0' or addr_B /= addr_W)  else DATA;    
+    
 end Behavioral;
