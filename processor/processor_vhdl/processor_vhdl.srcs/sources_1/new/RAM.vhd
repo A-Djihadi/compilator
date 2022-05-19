@@ -18,9 +18,10 @@
 -- 
 ----------------------------------------------------------------------------------
 
-
 library IEEE;
 use IEEE.STD_LOGIC_1164.ALL;
+use IEEE.STD_LOGIC_UNSIGNED.ALL;
+use IEEE.NUMERIC_STD.all;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
@@ -54,20 +55,21 @@ begin
         begin
             if(CLK'Event and CLK = '1')then
                 if(RST='0') then -- RST DE LA MEMOIRE A ZERO
-                    Mem <= (others => X"00");
+                    REG <= (others => X"00");
                 else
                     if(RW = '0') then -- CAS D'UNE ECRITURE               
+                        REG(to_integer(unsigned(ADR))) <= R_IN;
                     else -- CAS D'UNE LECTURE
+                        R_OUT <= REG(to_integer(unsigned(ADR)));
                     end if;
                 
-                end if
+                end if;
             
-               
-
         
+
             end if;
     
-    end process
+    end process;
 
 
 end Behavioral;
