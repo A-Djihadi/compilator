@@ -1,13 +1,14 @@
-
-*** Running vivado
-    with args -log processor.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source processor.tcl
-
-
-****** Vivado v2018.2 (64-bit)
-  **** SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
-  **** IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-    ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
-
+#-----------------------------------------------------------
+# Vivado v2018.2 (64-bit)
+# SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
+# IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
+# Start of session at: Thu May 26 22:09:59 2022
+# Process ID: 241307
+# Current directory: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
+# Command line: vivado -log processor.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source processor.tcl
+# Log file: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/processor.vds
+# Journal file: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/vivado.jou
+#-----------------------------------------------------------
 source processor.tcl -notrace
 Command: synth_design -top processor -part xc7a35tcpg236-1
 Starting synth_design

@@ -48,12 +48,12 @@ foreach dcp [get_files -quiet -all -filter file_type=="Design\ Checkpoint"] {
 set_param ips.enableIPCacheLiteLoad 0
 close [open __synthesis_is_running__ w]
 
-synth_design -top ROM -part xc7a35tcpg236-1
+synth_design -top processor -part xc7a35tcpg236-1
 
 
 # disable binary constraint mode for synth run checkpoints
 set_param constraints.enableBinaryConstraints false
-write_checkpoint -force -noxdef ROM.dcp
-create_report "synth_1_synth_report_utilization_0" "report_utilization -file ROM_utilization_synth.rpt -pb ROM_utilization_synth.pb"
+write_checkpoint -force -noxdef processor.dcp
+create_report "synth_1_synth_report_utilization_0" "report_utilization -file processor_utilization_synth.rpt -pb processor_utilization_synth.pb"
 file delete __synthesis_is_running__
 close [open __synthesis_is_complete__ w]

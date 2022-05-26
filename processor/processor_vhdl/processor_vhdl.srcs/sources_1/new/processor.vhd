@@ -33,7 +33,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity processor is
   Port (IP : in STD_LOGIC_VECTOR (7 downto 0);
-    RST,CLK : in STD_LOGIC);
+    RST,CLK_P : in STD_LOGIC);
 end processor;
 
 architecture Behavioral of processor is
@@ -59,10 +59,10 @@ Port ( OP1_Alu,OP2_Alu: in STD_LOGIC_VECTOR (7 downto 0);
 end component;
 
 component BANC_REGISTRE is
-Port ( addr_A_Reg,addr_B_Reg,addr_W_Reg : in STD_LOGIC_VECTOR (3 downto 0);
-       DATA_Reg : in STD_LOGIC_VECTOR (7 downto 0);
-       W_Reg,RST_Reg,CLK_Reg : in STD_LOGIC;
-       QA_Reg,QB_reg : out STD_LOGIC_VECTOR (7 downto 0));
+Port ( addr_A,addr_B,addr_W : in STD_LOGIC_VECTOR (3 downto 0);
+       DATA: in STD_LOGIC_VECTOR (7 downto 0);
+       W,RST,CLK : in STD_LOGIC;
+       QA,QB : out STD_LOGIC_VECTOR (7 downto 0));
 end component;
 
 
@@ -77,16 +77,10 @@ end component;
 
 --------------Inputs----------------
 
---signal T_A : std_logic_vector (7 downto 0)     := (others => '0');
---signal T_B : std_logic_vector (15 downto 8)    := (others => '0');
---signal T_OP: std_logic_vector (23 downto 16)   := (others => '0');
---signal T_C : std_logic_vector (31 downto 24)   := (others => '0');
-
-
-signal T_A : std_logic_vector (7 downto 0):= (others => '0');
-signal T_B : std_logic_vector (7 downto 0):= (others => '0');
-signal T_OP: std_logic_vector (7 downto 0):= (others => '0');
-signal T_C : std_logic_vector (7 downto 0):= (others => '0');
+signal LiDiOutA,LiDiOutB,LiDiOutOP,LiDiOutC : std_logic_vector (7 downto 0) := (others => '0');
+signal DiExOutA,DiExOutB,DiExOutOP,DiExOutC : std_logic_vector (7 downto 0) := (others => '0');
+signal ExMemOutA,ExMemOutB,ExMemOutOP,ExMemOutC : std_logic_vector (7 downto 0) := (others => '0');
+signal MemReOutA,MemReOutB,MemReOutOP,MemReOutC : std_logic_vector (7 downto 0) := (others => '0');
 
 
 -----------Common inputs-----------
@@ -111,60 +105,70 @@ begin
 Mem_innstruction:ROM 
 PORT MAP (
     ADR_IN=>IP,
-    CLK=>CLK,
+    CLK=>CLK_P,
     R_OUT=>T_R_OUT); 
 
---Banc_Reg:BANC_REGISTRE PORT MAP();
+Banc_Reg:BANC_REGISTRE 
+PORT MAP(
+    addr_A => T_addr_A,
+    addr_B => T_addr_B,
+    addr_W => MemReOutA(7 downto 4),
+    DATA => MemReOutB,
+    W => MemReOutOP(1),
+    RST => RST,
+    CLK => CLK_P,
+    
+    QA => T_QA,
+    QB => T_QB
+);
 
 LI_DI: Pipeline 
 PORT MAP(
-    A_in=>T_R_OUT(7 downto 0),
-    B_in=>T_R_OUT(15 downto 8), 
-    OP_in=>T_R_OUT(23 downto 16),
-    C_in=>T_R_OUT(31 downto 24),
-    CLK=>CLK,
-    A_out=>T_A,
-    B_out=>T_B,
-    OP_out=>T_OP,
-    C_out=>T_C);
+    A_in=>T_R_OUT(31 downto 24),
+    B_in=>T_R_OUT(23 downto 16), 
+    OP_in=>T_R_OUT(15 downto 8),
+    C_in=>T_R_OUT(7 downto 0),
+    CLK=>CLK_P,
+    A_out=>LiDiOutA,
+    B_out=>LiDiOutB,
+    OP_out=>LiDiOutOP,
+    C_out=>LiDiOutC);
 
 DI_EX: Pipeline 
 PORT MAP(
-    A_in=>T_A,
-    B_in=>T_B, 
-    OP_in=>T_OP,
-    C_in=>T_C,
-    CLK=>CLK,
-    A_out=>T_A,
-    B_out=>T_B,
-    OP_out=>T_OP,
-    C_out=>T_C);
+    A_in=>LiDiOutA,
+    B_in=>LiDiOutB, 
+    OP_in=>LiDiOutOP,
+    C_in=>LiDiOutC,
+    CLK=>CLK_P,
+    A_out=>DiExOutA,
+    B_out=>DiExOutB,
+    OP_out=>DiExOutOP,
+    C_out=>DiExOutC);
     
 EX_Mem: Pipeline 
 PORT MAP(
-    A_in=>T_A,
-    B_in=>T_B, 
-    OP_in=>T_OP,
-    C_in=>T_C,
-    CLK=>CLK,
-    A_out=>T_A,
-    B_out=>T_B,
-    OP_out=>T_OP,
-    C_out=>T_C);
+    A_in=>DiExOutA,
+    B_in=>DiExOutB, 
+    OP_in=>DiExOutOP,
+    C_in=>DiExOutC,
+    CLK=>CLK_P,
+    A_out=>ExMemOutA,
+    B_out=>ExMemOutB,
+    OP_out=>ExMemOutOP,
+    C_out=>ExMemOutC);
         
 Mem_RE: Pipeline 
 PORT MAP(
-    A_in=>T_A,
-    B_in=>T_B, 
-    OP_in=>T_OP,
-    C_in=>T_C,
-    CLK=>CLK,
-    A_out=>T_A,
-    B_out=>T_B,
-    OP_out=>T_OP,
-    C_out=>T_C);
-    
-    
+    A_in=>ExMemOutA,
+    B_in=>ExMemOutB, 
+    OP_in=>ExMemOutOP,
+    C_in=>ExMemOutC,
+    CLK=>CLK_P,
+    A_out=>MemReOutA,
+    B_out=>MemReOutB,
+    OP_out=>MemReOutOP,
+    C_out=>MemReOutC);
     
     
     

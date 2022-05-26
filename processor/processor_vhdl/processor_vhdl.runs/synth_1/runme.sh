@@ -36,4 +36,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log ROM.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source ROM.tcl
+EAStep vivado -log processor.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source processor.tcl

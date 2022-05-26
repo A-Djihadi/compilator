@@ -38,12 +38,12 @@ architecture Behavioral of Proc_SIMU is
 
 --COMPONENT TEST
 COMPONENT processor
-  Port (IP : in STD_LOGIC_VECTOR (31 downto 0);
-        RST,CLK : in STD_LOGIC);
+  Port (IP : in STD_LOGIC_VECTOR (7 downto 0);
+        RST,CLK_P : in STD_LOGIC);
 END COMPONENT;
 
 --Inputs
-signal T_IP: std_logic_vector (31 downto 0):= (others => '0');
+signal T_IP: std_logic_vector (7 downto 0):= (others => '0');
 signal T_RST,T_CLK: std_logic := '0';
 
 
@@ -55,7 +55,7 @@ Proc_simu : processor
 PORT MAP (
     IP  => T_IP,
     RST => T_RST,
-    CLK => T_CLK
+    CLK_P => T_CLK
 );
 
 Clock_process : process
@@ -65,7 +65,7 @@ begin
 end process;
 
 
-T_IP   <= X"00000000" after 1 ns,X"0EE000AA" after 50 ns,X"0BBFF110" after 100 ns, X"FFFFFFFF" after 150 ns;
-T_RST   <= '0' after 1 ns,'1' after 250 ns, '0' after 400 ns;
+T_IP   <= X"00" after 1 ns,X"01" after 50 ns,X"02" after 100 ns, X"FF" after 150 ns;
+T_RST   <= '1' after 1 ns,'0' after 3 ns;
 
 end Behavioral;

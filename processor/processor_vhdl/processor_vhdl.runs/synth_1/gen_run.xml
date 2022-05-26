@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1653580832">
-  <File Type="VDS-TIMING-PB" Name="ROM_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="ROM_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="ROM.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="ROM_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="ROM_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="ROM_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="ROM.vds"/>
-  <File Type="REPORTS-TCL" Name="ROM_reports.tcl"/>
-  <File Type="PA-TCL" Name="ROM.tcl"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1653595797">
+  <File Type="VDS-TIMING-PB" Name="processor_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="processor_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="processor.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="processor_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="processor_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="processor_drc_synth.rpt"/>
+  <File Type="RDS-RDS" Name="processor.vds"/>
+  <File Type="REPORTS-TCL" Name="processor_reports.tcl"/>
+  <File Type="PA-TCL" Name="processor.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/ALU.vhd">
@@ -57,7 +57,7 @@
     </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="ROM"/>
+      <Option Name="TopModule" Val="processor"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">

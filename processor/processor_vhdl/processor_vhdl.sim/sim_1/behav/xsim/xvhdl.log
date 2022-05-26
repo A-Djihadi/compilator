@@ -1,2 +1,2 @@
-INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/ROM_SIMU.vhd" into library xil_defaultlib
-INFO: [VRFC 10-307] analyzing entity ROM_SIMU
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Proc_SIMU

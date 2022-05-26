@@ -1,6 +1,6 @@
 Vivado Simulator 2018.2
 Copyright 1986-1999, 2001-2018 Xilinx, Inc. All Rights Reserved.
-Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 85fdfe322208446db5d9005212aa50eb --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot ROM_SIMU_behav xil_defaultlib.ROM_SIMU -log elaborate.log 
+Running: /usr/local/insa/Xilinx.VIVADO/Vivado/2018.2/bin/unwrapped/lnx64.o/xelab -wto 85fdfe322208446db5d9005212aa50eb --incr --debug typical --relax --mt 8 -L xil_defaultlib -L secureip --snapshot Proc_SIMU_behav xil_defaultlib.Proc_SIMU -log elaborate.log 
 Using 8 slave threads.
 Starting static elaboration
 Completed static elaboration
@@ -14,5 +14,8 @@ Compiling package ieee.std_logic_arith
 Compiling package ieee.std_logic_unsigned
 Compiling package ieee.numeric_std
 Compiling architecture behavioral of entity xil_defaultlib.ROM [rom_default]
-Compiling architecture behavioral of entity xil_defaultlib.rom_simu
-Built simulation snapshot ROM_SIMU_behav
+Compiling architecture behavioral of entity xil_defaultlib.BANC_REGISTRE [banc_registre_default]
+Compiling architecture behavioral of entity xil_defaultlib.Pipeline [pipeline_default]
+Compiling architecture behavioral of entity xil_defaultlib.processor [processor_default]
+Compiling architecture behavioral of entity xil_defaultlib.proc_simu
+Built simulation snapshot Proc_SIMU_behav

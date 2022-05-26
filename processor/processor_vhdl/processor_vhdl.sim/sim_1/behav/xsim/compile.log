@@ -193,3 +193,43 @@ INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/process
 INFO: [VRFC 10-307] analyzing entity ROM_SIMU
 INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/ROM_SIMU.vhd" into library xil_defaultlib
 INFO: [VRFC 10-307] analyzing entity ROM_SIMU
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity processor
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/compilator/compilator.srcs/sources_1/new/ROM.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ROM
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Proc_SIMU
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Proc_SIMU
+ERROR: [VRFC 10-719] formal port/generic <clk> is not declared in <processor> [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd:58]
+ERROR: [VRFC 10-2666] formal port clk_p has no actual or default value [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd:54]
+ERROR: [VRFC 10-1504] unit behavioral ignored due to previous errors [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd:37]
+INFO: [VRFC 10-240] VHDL file /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd ignored due to errors
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Proc_SIMU
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Proc_SIMU
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity processor
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity processor
+ERROR: [VRFC 10-91] t_a is not declared [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:115]
+ERROR: [VRFC 10-91] t_b is not declared [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:116]
+ERROR: [VRFC 10-1504] unit behavioral ignored due to previous errors [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:39]
+INFO: [VRFC 10-240] VHDL file /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd ignored due to errors
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity processor
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity processor
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity processor
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity processor
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/compilator/compilator.srcs/sources_1/new/ROM.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ROM
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity processor
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Proc_SIMU
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Proc_SIMU
