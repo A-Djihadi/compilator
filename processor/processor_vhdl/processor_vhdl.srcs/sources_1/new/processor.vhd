@@ -32,9 +32,8 @@ use IEEE.STD_LOGIC_1164.ALL;
 --use UNISIM.VComponents.all;
 
 entity processor is
-  Port (
-    ADR_IST: in STD_LOGIC_VECTOR (7 downto 0);
-    CLK : in STD_LOGIC);
+  Port (IP : in STD_LOGIC_VECTOR (7 downto 0);
+    RST,CLK : in STD_LOGIC);
 end processor;
 
 architecture Behavioral of processor is
@@ -47,8 +46,9 @@ component RAM is
 end component;
 
 component ROM is
-Port(ADR_IN_ROM: in STD_LOGIC_VECTOR (7 downto 0);
-    R_OUT_ROM: out STD_LOGIC_VECTOR (31 downto 0));
+Port(ADR_IN: in STD_LOGIC_VECTOR (7 downto 0);
+    CLK : in STD_LOGIC;
+    R_OUT: out STD_LOGIC_VECTOR (31 downto 0));
 end component;
 
 component ALU is
@@ -66,68 +66,107 @@ Port ( addr_A_Reg,addr_B_Reg,addr_W_Reg : in STD_LOGIC_VECTOR (3 downto 0);
 end component;
 
 
-component pipe1 is
-Port( A_p1,B_p1,C_p1 : in STD_LOGIC_VECTOR (7 downto 0);
-    OP_p1 :in STD_LOGIC_VECTOR (3 downto 0));
+component Pipeline is
+Port( A_in,B_in,Op_in,C_in : in STD_LOGIC_VECTOR (7 downto 0);
+      CLK: in STD_LOGIC;
+      A_out,B_out,OP_out,C_out : out STD_LOGIC_VECTOR (7 downto 0));
 end component;
 
-component pipe2 is
-Port( A_p2,B_p2,C_p2 : in STD_LOGIC_VECTOR (7 downto 0);
-    OP_p2 :in STD_LOGIC_VECTOR (3 downto 0));
-end component;
+------------------------END COMPONENTS------------------------
 
 
---------------------------------END----------------------------------
---Inputs
---ROM
+--------------Inputs----------------
+
+--signal T_A : std_logic_vector (7 downto 0)     := (others => '0');
+--signal T_B : std_logic_vector (15 downto 8)    := (others => '0');
+--signal T_OP: std_logic_vector (23 downto 16)   := (others => '0');
+--signal T_C : std_logic_vector (31 downto 24)   := (others => '0');
+
+
+signal T_A : std_logic_vector (7 downto 0):= (others => '0');
+signal T_B : std_logic_vector (7 downto 0):= (others => '0');
+signal T_OP: std_logic_vector (7 downto 0):= (others => '0');
+signal T_C : std_logic_vector (7 downto 0):= (others => '0');
+
+
+-----------Common inputs-----------
+signal T_RST: STD_LOGIC := '0';
+signal T_CLK: STD_LOGIC := '1';
+--BANC DE REGISTRE
 signal T_addr_A: std_logic_vector (3 downto 0):= (others => '0');
 signal T_addr_B: std_logic_vector (3 downto 0):= (others => '0');
 signal T_addr_W: std_logic_vector (3 downto 0):= (others => '0');
 signal T_DATA: std_logic_vector (7 downto 0):= (others => '0');
 signal T_W: STD_LOGIC := '0';
-signal T_RST: STD_LOGIC := '0';
-signal T_CLK: STD_LOGIC := '1';
---RAM
---ALU
+--ROM
+signal IP_IN: STD_LOGIC_VECTOR (7 downto 0):= (others => '0');
+signal T_R_OUT: STD_LOGIC_VECTOR (31 downto 0):=(others => '0'); 
 
---BANC REGISTRE
---PIPE
---
-
-
-
-
-
-
-
-
-
-
-
---Outputs
+--------------Outputs---------------
 signal T_QA: std_logic_vector(7 downto 0);
 signal T_QB: std_logic_vector(7 downto 0);
-
---------------------------CREATION DES PIPE---------------------
-
-
-
+---------------------------------------------------------------------
 begin
 
-LI_DI : pipe1 
+Mem_innstruction:ROM 
+PORT MAP (
+    ADR_IN=>IP,
+    CLK=>CLK,
+    R_OUT=>T_R_OUT); 
+
+--Banc_Reg:BANC_REGISTRE PORT MAP();
+
+LI_DI: Pipeline 
 PORT MAP(
-    R_OUT_ROM(7 downto 0) => OP_p1,
-    R_OUT_ROM(15 downto 8)  => A_p1, 
-    R_OUT_ROM(23 downto 16) => B_p1,
-    R_OUT_ROM(31 downto 17) => C_p1
-    );
+    A_in=>T_R_OUT(7 downto 0),
+    B_in=>T_R_OUT(15 downto 8), 
+    OP_in=>T_R_OUT(23 downto 16),
+    C_in=>T_R_OUT(31 downto 24),
+    CLK=>CLK,
+    A_out=>T_A,
+    B_out=>T_B,
+    OP_out=>T_OP,
+    C_out=>T_C);
 
-
-
-
-
-
-
-
+DI_EX: Pipeline 
+PORT MAP(
+    A_in=>T_A,
+    B_in=>T_B, 
+    OP_in=>T_OP,
+    C_in=>T_C,
+    CLK=>CLK,
+    A_out=>T_A,
+    B_out=>T_B,
+    OP_out=>T_OP,
+    C_out=>T_C);
+    
+EX_Mem: Pipeline 
+PORT MAP(
+    A_in=>T_A,
+    B_in=>T_B, 
+    OP_in=>T_OP,
+    C_in=>T_C,
+    CLK=>CLK,
+    A_out=>T_A,
+    B_out=>T_B,
+    OP_out=>T_OP,
+    C_out=>T_C);
+        
+Mem_RE: Pipeline 
+PORT MAP(
+    A_in=>T_A,
+    B_in=>T_B, 
+    OP_in=>T_OP,
+    C_in=>T_C,
+    CLK=>CLK,
+    A_out=>T_A,
+    B_out=>T_B,
+    OP_out=>T_OP,
+    C_out=>T_C);
+    
+    
+    
+    
+    
 
 end Behavioral;

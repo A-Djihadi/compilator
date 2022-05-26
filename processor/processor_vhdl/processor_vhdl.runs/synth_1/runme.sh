@@ -36,4 +36,4 @@ EAStep()
      fi
 }
 
-EAStep vivado -log BANC_REGISTRE.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source BANC_REGISTRE.tcl
+EAStep vivado -log ROM.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source ROM.tcl

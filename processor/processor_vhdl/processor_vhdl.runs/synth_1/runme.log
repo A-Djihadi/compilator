@@ -1,6 +1,6 @@
 
 *** Running vivado
-    with args -log BANC_REGISTRE.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source BANC_REGISTRE.tcl
+    with args -log ROM.vds -m64 -product Vivado -mode batch -messageDb vivado.pb -notrace -source ROM.tcl
 
 
 ****** Vivado v2018.2 (64-bit)
@@ -8,23 +8,23 @@
   **** IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
     ** Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 
-source BANC_REGISTRE.tcl -notrace
-Command: synth_design -top BANC_REGISTRE -part xc7a35tcpg236-1
+source ROM.tcl -notrace
+Command: synth_design -top ROM -part xc7a35tcpg236-1
 Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 76691 
+INFO: Helper process launched with PID 204009 
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 1255.273 ; gain = 83.828 ; free physical = 56182 ; free virtual = 68933
+Starting Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1255.270 ; gain = 83.809 ; free physical = 113755 ; free virtual = 140648
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-638] synthesizing module 'BANC_REGISTRE' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:49]
-INFO: [Synth 8-256] done synthesizing module 'BANC_REGISTRE' (1#1) [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:49]
+INFO: [Synth 8-638] synthesizing module 'ROM' [/home/ahamdy/compilator/compilator.srcs/sources_1/new/ROM.vhd:41]
+INFO: [Synth 8-256] done synthesizing module 'ROM' (1#1) [/home/ahamdy/compilator/compilator.srcs/sources_1/new/ROM.vhd:41]
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1299.898 ; gain = 128.453 ; free physical = 56195 ; free virtual = 68946
+Finished Synthesize : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1299.895 ; gain = 128.434 ; free physical = 113766 ; free virtual = 140660
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1299.898 ; gain = 128.453 ; free physical = 56195 ; free virtual = 68946
+Finished Constraint Validation : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1299.895 ; gain = 128.434 ; free physical = 113767 ; free virtual = 140661
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -32,26 +32,10 @@ Start Loading Part and Timing Information
 Loading part: xc7a35tcpg236-1
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:02 ; elapsed = 00:00:02 . Memory (MB): peak = 1307.902 ; gain = 136.457 ; free physical = 56193 ; free virtual = 68945
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1307.898 ; gain = 136.438 ; free physical = 113765 ; free virtual = 140660
 ---------------------------------------------------------------------------------
-INFO: [Synth 8-5546] ROM "REG_reg[0]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[1]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[2]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[3]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[4]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[5]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[6]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[7]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[8]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[9]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[10]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[11]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[12]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[13]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[14]" won't be mapped to RAM because it is too sparse
-INFO: [Synth 8-5546] ROM "REG_reg[15]" won't be mapped to RAM because it is too sparse
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1323.918 ; gain = 152.473 ; free physical = 56184 ; free virtual = 68936
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:03 ; elapsed = 00:00:04 . Memory (MB): peak = 1315.906 ; gain = 144.445 ; free physical = 113755 ; free virtual = 140650
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -65,10 +49,10 @@ Start RTL Component Statistics
 ---------------------------------------------------------------------------------
 Detailed RTL Component Info : 
 +---Registers : 
-	                8 Bit    Registers := 16    
+	               32 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input      8 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 8     
+	   3 Input     32 Bit        Muxes := 1     
+	 256 Input      2 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Component Statistics 
 ---------------------------------------------------------------------------------
@@ -76,13 +60,13 @@ Finished RTL Component Statistics
 Start RTL Hierarchical Component Statistics 
 ---------------------------------------------------------------------------------
 Hierarchical RTL Component report 
-Module BANC_REGISTRE 
+Module ROM 
 Detailed RTL Component Info : 
 +---Registers : 
-	                8 Bit    Registers := 16    
+	               32 Bit    Registers := 1     
 +---Muxes : 
-	   2 Input      8 Bit        Muxes := 2     
-	   2 Input      1 Bit        Muxes := 8     
+	   3 Input     32 Bit        Muxes := 1     
+	 256 Input      2 Bit        Muxes := 1     
 ---------------------------------------------------------------------------------
 Finished RTL Hierarchical Component Statistics
 ---------------------------------------------------------------------------------
@@ -100,38 +84,38 @@ No constraint files found.
 Start Cross Boundary and Area Optimization
 ---------------------------------------------------------------------------------
 Warning: Parallel synthesis criteria is not met 
-INFO: [Synth 8-4471] merging register 'REG_reg[9][7:0]' into 'REG_reg[8][7:0]' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:60]
-INFO: [Synth 8-4471] merging register 'REG_reg[10][7:0]' into 'REG_reg[8][7:0]' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:60]
-INFO: [Synth 8-4471] merging register 'REG_reg[11][7:0]' into 'REG_reg[8][7:0]' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:60]
-INFO: [Synth 8-4471] merging register 'REG_reg[12][7:0]' into 'REG_reg[8][7:0]' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:60]
-INFO: [Synth 8-4471] merging register 'REG_reg[13][7:0]' into 'REG_reg[8][7:0]' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:60]
-INFO: [Synth 8-4471] merging register 'REG_reg[14][7:0]' into 'REG_reg[8][7:0]' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:60]
-INFO: [Synth 8-4471] merging register 'REG_reg[15][7:0]' into 'REG_reg[8][7:0]' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:60]
-WARNING: [Synth 8-6014] Unused sequential element REG_reg[9] was removed.  [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:60]
-WARNING: [Synth 8-6014] Unused sequential element REG_reg[10] was removed.  [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:60]
-WARNING: [Synth 8-6014] Unused sequential element REG_reg[11] was removed.  [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:60]
-WARNING: [Synth 8-6014] Unused sequential element REG_reg[12] was removed.  [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:60]
-WARNING: [Synth 8-6014] Unused sequential element REG_reg[13] was removed.  [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:60]
-WARNING: [Synth 8-6014] Unused sequential element REG_reg[14] was removed.  [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:60]
-WARNING: [Synth 8-6014] Unused sequential element REG_reg[15] was removed.  [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:60]
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REG_reg[8][0] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REG_reg[8][1] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REG_reg[8][2] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REG_reg[8][3] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REG_reg[8][4] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REG_reg[8][5] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REG_reg[8][6] )
-INFO: [Synth 8-3333] propagating constant 0 across sequential element (\REG_reg[8][7] )
-WARNING: [Synth 8-3332] Sequential element (REG_reg[8][7]) is unused and will be removed from module BANC_REGISTRE.
-WARNING: [Synth 8-3332] Sequential element (REG_reg[8][6]) is unused and will be removed from module BANC_REGISTRE.
-WARNING: [Synth 8-3332] Sequential element (REG_reg[8][5]) is unused and will be removed from module BANC_REGISTRE.
-WARNING: [Synth 8-3332] Sequential element (REG_reg[8][4]) is unused and will be removed from module BANC_REGISTRE.
-WARNING: [Synth 8-3332] Sequential element (REG_reg[8][3]) is unused and will be removed from module BANC_REGISTRE.
-WARNING: [Synth 8-3332] Sequential element (REG_reg[8][2]) is unused and will be removed from module BANC_REGISTRE.
-WARNING: [Synth 8-3332] Sequential element (REG_reg[8][1]) is unused and will be removed from module BANC_REGISTRE.
-WARNING: [Synth 8-3332] Sequential element (REG_reg[8][0]) is unused and will be removed from module BANC_REGISTRE.
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[0]' (FD) to 'R_OUT_reg[1]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[1]' (FD) to 'R_OUT_reg[2]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[2]' (FD) to 'R_OUT_reg[3]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[3]' (FD) to 'R_OUT_reg[4]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[4]' (FD) to 'R_OUT_reg[5]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[5]' (FD) to 'R_OUT_reg[6]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[6]' (FD) to 'R_OUT_reg[7]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[7]' (FD) to 'R_OUT_reg[10]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[8]' (FD) to 'R_OUT_reg[12]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[9]' (FD) to 'R_OUT_reg[13]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[10]' (FD) to 'R_OUT_reg[11]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[11]' (FD) to 'R_OUT_reg[14]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[12]' (FD) to 'R_OUT_reg[25]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[13]' (FD) to 'R_OUT_reg[24]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[14]' (FD) to 'R_OUT_reg[15]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[15]' (FD) to 'R_OUT_reg[17]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[17]' (FD) to 'R_OUT_reg[18]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[18]' (FD) to 'R_OUT_reg[19]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[19]' (FD) to 'R_OUT_reg[20]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[20]' (FD) to 'R_OUT_reg[21]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[21]' (FD) to 'R_OUT_reg[22]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[22]' (FD) to 'R_OUT_reg[23]'
+INFO: [Synth 8-3333] propagating constant 0 across sequential element (\R_OUT_reg[23] )
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[24]' (FD) to 'R_OUT_reg[28]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[25]' (FD) to 'R_OUT_reg[26]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[26]' (FD) to 'R_OUT_reg[27]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[27]' (FD) to 'R_OUT_reg[29]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[29]' (FD) to 'R_OUT_reg[30]'
+INFO: [Synth 8-3886] merging instance 'R_OUT_reg[30]' (FD) to 'R_OUT_reg[31]'
+WARNING: [Synth 8-3332] Sequential element (R_OUT_reg[23]) is unused and will be removed from module ROM.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:14 . Memory (MB): peak = 1435.035 ; gain = 263.590 ; free physical = 56031 ; free virtual = 68783
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:21 . Memory (MB): peak = 1433.023 ; gain = 261.562 ; free physical = 113584 ; free virtual = 140500
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -144,7 +128,7 @@ No constraint files found.
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:06 ; elapsed = 00:00:14 . Memory (MB): peak = 1435.035 ; gain = 263.590 ; free physical = 56031 ; free virtual = 68784
+Finished Timing Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:21 . Memory (MB): peak = 1433.023 ; gain = 261.562 ; free physical = 113584 ; free virtual = 140501
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -156,7 +140,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:06 ; elapsed = 00:00:14 . Memory (MB): peak = 1435.035 ; gain = 263.590 ; free physical = 56031 ; free virtual = 68784
+Finished Technology Mapping : Time (s): cpu = 00:00:09 ; elapsed = 00:00:21 . Memory (MB): peak = 1433.023 ; gain = 261.562 ; free physical = 113584 ; free virtual = 140500
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -180,7 +164,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1435.035 ; gain = 263.590 ; free physical = 56031 ; free virtual = 68784
+Finished IO Insertion : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 1433.023 ; gain = 261.562 ; free physical = 113581 ; free virtual = 140497
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -193,7 +177,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1435.035 ; gain = 263.590 ; free physical = 56031 ; free virtual = 68784
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 1433.023 ; gain = 261.562 ; free physical = 113581 ; free virtual = 140497
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -205,25 +189,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1435.035 ; gain = 263.590 ; free physical = 56031 ; free virtual = 68784
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 1433.023 ; gain = 261.562 ; free physical = 113581 ; free virtual = 140497
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1435.035 ; gain = 263.590 ; free physical = 56031 ; free virtual = 68784
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 1433.023 ; gain = 261.562 ; free physical = 113581 ; free virtual = 140497
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1435.035 ; gain = 263.590 ; free physical = 56031 ; free virtual = 68784
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 1433.023 ; gain = 261.562 ; free physical = 113581 ; free virtual = 140497
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1435.035 ; gain = 263.590 ; free physical = 56031 ; free virtual = 68784
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 1433.023 ; gain = 261.562 ; free physical = 113581 ; free virtual = 140497
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -236,32 +220,32 @@ Report BlackBoxes:
 +-+--------------+----------+
 
 Report Cell Usage: 
-+------+------+------+
-|      |Cell  |Count |
-+------+------+------+
-|1     |BUFG  |     1|
-|2     |LUT5  |     8|
-|3     |LUT6  |    50|
-|4     |MUXF7 |    16|
-|5     |FDRE  |    64|
-|6     |IBUF  |    23|
-|7     |OBUF  |    16|
-+------+------+------+
++------+-----+------+
+|      |Cell |Count |
++------+-----+------+
+|1     |BUFG |     1|
+|2     |LUT2 |     1|
+|3     |LUT3 |     2|
+|4     |LUT6 |     1|
+|5     |FDRE |     3|
+|6     |IBUF |     9|
+|7     |OBUF |    32|
++------+-----+------+
 
 Report Instance Areas: 
 +------+---------+-------+------+
 |      |Instance |Module |Cells |
 +------+---------+-------+------+
-|1     |top      |       |   178|
+|1     |top      |       |    49|
 +------+---------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1435.035 ; gain = 263.590 ; free physical = 56031 ; free virtual = 68784
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 1433.023 ; gain = 261.562 ; free physical = 113581 ; free virtual = 140497
 ---------------------------------------------------------------------------------
-Synthesis finished with 0 errors, 0 critical warnings and 15 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1435.035 ; gain = 263.590 ; free physical = 56033 ; free virtual = 68785
-Synthesis Optimization Complete : Time (s): cpu = 00:00:07 ; elapsed = 00:00:14 . Memory (MB): peak = 1435.043 ; gain = 263.590 ; free physical = 56043 ; free virtual = 68796
+Synthesis finished with 0 errors, 0 critical warnings and 1 warnings.
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 1433.023 ; gain = 261.562 ; free physical = 113582 ; free virtual = 140499
+Synthesis Optimization Complete : Time (s): cpu = 00:00:10 ; elapsed = 00:00:22 . Memory (MB): peak = 1433.031 ; gain = 261.562 ; free physical = 113591 ; free virtual = 140508
 INFO: [Project 1-571] Translating synthesized netlist
-INFO: [Netlist 29-17] Analyzing 39 Unisim elements for replacement
+INFO: [Netlist 29-17] Analyzing 9 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -269,11 +253,11 @@ INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
 INFO: [Common 17-83] Releasing license: Synthesis
-42 Infos, 15 Warnings, 0 Critical Warnings and 0 Errors encountered.
+40 Infos, 1 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:08 ; elapsed = 00:00:15 . Memory (MB): peak = 1509.035 ; gain = 349.215 ; free physical = 56006 ; free virtual = 68758
+synth_design: Time (s): cpu = 00:00:13 ; elapsed = 00:00:24 . Memory (MB): peak = 1563.051 ; gain = 403.234 ; free physical = 113545 ; free virtual = 140476
 WARNING: [Constraints 18-5210] No constraint will be written out.
-INFO: [Common 17-1381] The checkpoint '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/BANC_REGISTRE.dcp' has been generated.
-INFO: [runtcl-4] Executing : report_utilization -file BANC_REGISTRE_utilization_synth.rpt -pb BANC_REGISTRE_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00.06 ; elapsed = 00:00:00.09 . Memory (MB): peak = 1533.047 ; gain = 0.000 ; free physical = 56008 ; free virtual = 68760
-INFO: [Common 17-206] Exiting Vivado at Tue May 10 11:16:13 2022...
+INFO: [Common 17-1381] The checkpoint '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/ROM.dcp' has been generated.
+INFO: [runtcl-4] Executing : report_utilization -file ROM_utilization_synth.rpt -pb ROM_utilization_synth.pb
+report_utilization: Time (s): cpu = 00:00:00.08 ; elapsed = 00:00:00.15 . Memory (MB): peak = 1587.062 ; gain = 0.000 ; free physical = 113546 ; free virtual = 140477
+INFO: [Common 17-206] Exiting Vivado at Thu May 26 18:01:08 2022...

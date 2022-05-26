@@ -1,52 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1652174149">
-  <File Type="VDS-TIMING-PB" Name="BANC_REGISTRE_timing_summary_synth.pb"/>
-  <File Type="VDS-TIMINGSUMMARY" Name="BANC_REGISTRE_timing_summary_synth.rpt"/>
-  <File Type="RDS-DCP" Name="BANC_REGISTRE.dcp"/>
-  <File Type="RDS-UTIL-PB" Name="BANC_REGISTRE_utilization_synth.pb"/>
-  <File Type="RDS-UTIL" Name="BANC_REGISTRE_utilization_synth.rpt"/>
-  <File Type="RDS-PROPCONSTRS" Name="BANC_REGISTRE_drc_synth.rpt"/>
-  <File Type="RDS-RDS" Name="BANC_REGISTRE.vds"/>
-  <File Type="REPORTS-TCL" Name="BANC_REGISTRE_reports.tcl"/>
-  <File Type="PA-TCL" Name="BANC_REGISTRE.tcl"/>
+<GenRun Id="synth_1" LaunchPart="xc7a35tcpg236-1" LaunchTime="1653580832">
+  <File Type="VDS-TIMING-PB" Name="ROM_timing_summary_synth.pb"/>
+  <File Type="VDS-TIMINGSUMMARY" Name="ROM_timing_summary_synth.rpt"/>
+  <File Type="RDS-DCP" Name="ROM.dcp"/>
+  <File Type="RDS-UTIL-PB" Name="ROM_utilization_synth.pb"/>
+  <File Type="RDS-UTIL" Name="ROM_utilization_synth.rpt"/>
+  <File Type="RDS-PROPCONSTRS" Name="ROM_drc_synth.rpt"/>
+  <File Type="RDS-RDS" Name="ROM.vds"/>
+  <File Type="REPORTS-TCL" Name="ROM_reports.tcl"/>
+  <File Type="PA-TCL" Name="ROM.tcl"/>
   <FileSet Name="sources" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1">
     <Filter Type="Srcs"/>
     <File Path="$PSRCDIR/sources_1/new/ALU.vhd">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../../compilator/compilator.srcs/sources_1/new/ALU.vhd"/>
         <Attr Name="ImportTime" Val="1649318755"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/DECODE.vhd">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../../compilator/compilator.srcs/sources_1/new/DECODE.vhd"/>
-        <Attr Name="ImportTime" Val="1649316308"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/EXECUTIF.vhd">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../../compilator/compilator.srcs/sources_1/new/EXECUTIF.vhd"/>
-        <Attr Name="ImportTime" Val="1649315438"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/FETCH.vhd">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../../compilator/compilator.srcs/sources_1/new/FETCH.vhd"/>
-        <Attr Name="ImportTime" Val="1649318805"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
-    <File Path="$PSRCDIR/sources_1/new/LIE.vhd">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../../compilator/compilator.srcs/sources_1/new/LIE.vhd"/>
-        <Attr Name="ImportTime" Val="1649315438"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
@@ -59,18 +27,10 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
-    <File Path="$PSRCDIR/sources_1/new/ROM.vhd">
-      <FileInfo>
-        <Attr Name="ImportPath" Val="$PPRDIR/../../../../compilator/compilator.srcs/sources_1/new/ROM.vhd"/>
-        <Attr Name="ImportTime" Val="1649317832"/>
-        <Attr Name="UsedIn" Val="synthesis"/>
-        <Attr Name="UsedIn" Val="simulation"/>
-      </FileInfo>
-    </File>
     <File Path="$PSRCDIR/sources_1/new/RAM.vhd">
       <FileInfo>
         <Attr Name="ImportPath" Val="$PPRDIR/../../../../compilator/compilator.srcs/sources_1/new/RAM.vhd"/>
-        <Attr Name="ImportTime" Val="1649317839"/>
+        <Attr Name="ImportTime" Val="1652176779"/>
         <Attr Name="UsedIn" Val="synthesis"/>
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
@@ -83,9 +43,21 @@
         <Attr Name="UsedIn" Val="simulation"/>
       </FileInfo>
     </File>
+    <File Path="$PPRDIR/../../../../compilator/compilator.srcs/sources_1/new/ROM.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
+    <File Path="$PSRCDIR/sources_1/new/Pipeline.vhd">
+      <FileInfo>
+        <Attr Name="UsedIn" Val="synthesis"/>
+        <Attr Name="UsedIn" Val="simulation"/>
+      </FileInfo>
+    </File>
     <Config>
       <Option Name="DesignMode" Val="RTL"/>
-      <Option Name="TopModule" Val="BANC_REGISTRE"/>
+      <Option Name="TopModule" Val="ROM"/>
     </Config>
   </FileSet>
   <FileSet Name="constrs_in" Type="Constrs" RelSrcDir="$PSRCDIR/constrs_1">

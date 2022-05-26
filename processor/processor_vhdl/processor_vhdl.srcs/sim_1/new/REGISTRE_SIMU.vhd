@@ -71,7 +71,7 @@ constant Clock_period : time := 2 ns;
          
 begin
     --Instantiate the Unit Under Test (UUT)
-Label_uut: BANC_REGISTRE PORT MAP (
+Banc_Reg_simu: BANC_REGISTRE PORT MAP (
     addr_A => T_addr_A,
     addr_B => T_addr_B,
     addr_W => T_addr_W,

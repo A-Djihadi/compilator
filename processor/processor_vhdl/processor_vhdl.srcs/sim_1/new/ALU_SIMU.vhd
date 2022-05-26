@@ -75,7 +75,7 @@ signal T_C : STD_LOGIC := '0';
 begin
 
     --Instantiate the Unit Under Test (UUT)
-Label_uut: ALU PORT MAP (
+Alu_simu: ALU PORT MAP (
     OP1 => T_OP1,
     OP2 => T_OP2,
     CTRL_ALU => OPERATOR,
