@@ -7,11 +7,20 @@
 #define TAILLE_MAX_INT 10
 #define MAX_NB_JUMP 200
 #define SIZE_OF_LLINE 512
+#define SIZE_FONCTION_NAME 256
+#define MAX_NUMBER_OF_FUNCTIONS 5
 // table des signes
 struct List notre_list;
 // fichier de sortie en assembleur
 FILE* fichier_tot = NULL;
 
+
+//sprintf(namefile,"%s.txt",name);
+char functions[MAX_NUMBER_OF_FUNCTIONS][SIZE_FONCTION_NAME];
+int param_functions[MAX_NUMBER_OF_FUNCTIONS];
+
+int nbr_functions = 0;
+int nbr_Params=0;
 
 //nommbre de variablees temporaires utilisées actuellemenet
 int nbrVarTemp=0;
@@ -26,7 +35,7 @@ int supprline = 0;
 
 
 int addTmp(){
-     char* nom=malloc(TAILLE_MAX_INT+4 * sizeof(char));  
+    char* nom=malloc(TAILLE_MAX_INT+4 * sizeof(char));  
     nbrVarTemp++;
     sprintf(nom, "%dTemp", nbrVarTemp);
     insert(&notre_list,nom,3);
@@ -45,14 +54,57 @@ int get_address(char *name){
     return address;
 }
 
+void init_fct(char *name){
+    nbr_Params=0;
+    char* namefile = malloc(SIZE_FONCTION_NAME);
+    sprintf(namefile,"%s.txt",name);
+    strcpy( functions[nbr_functions], name);
+    nbr_Params = 0;
+    fichier_tot = fopen(namefile, "w");
+}
+
+void close_fct(){
+    param_functions[nbr_functions]=nbr_Params;
+    clearlist(&notre_list);
+    nbrVarTemp = 0;
+    close(functions[nbr_functions]);
+    nbr_functions++;
+}
+
+void addIntParam(char *name1){
+    int adress;
+    if(inlist(notre_list,name1,&adress) == 0){      
+        insert(&notre_list,name1,1);
+        nbr_Params++;
+    }else{
+        printf("Should not happen\n");
+    }
+}
+
+void addConstParam(char *name1){
+    int adress;
+    if(inlist(notre_list,name1,&adress) == 0){      
+        insert(&notre_list,name1,2);
+        nbr_Params++;
+    }else{
+        printf("Should not happen\n");
+    }
+}
+
+
+
 //called at the start of the compiler, opens the file
 void init(){
+    nbr_lignes = 0;
+    nbr_ifs = 0;
+    
     fichier_tot = fopen("compilateur_asm.txt", "w");
     notre_list.addr_max= 0;
 }
 
 //called at the end of the compiler, opens the file
 void close(){
+    print_list(&notre_list);
     fclose(fichier_tot);
 }
 
@@ -127,12 +179,13 @@ void while_toPatch(int nb_if, int line){
 
 }
 
-void patch(){
+void patch(char* name_file){
     //
     if(nbr_ifs > 0){
         fclose(fichier_tot);
-        rename("compilateur_asm.txt", "tmp.txt");
-        fichier_tot = fopen("compilateur_asm.txt", "w");
+
+        rename(name_file, "tmp.txt");
+        fichier_tot = fopen(name_file, "w");
         FILE *fichier_tmp = fopen("tmp.txt", "r");
         int line = 0;
         char read_line[SIZE_OF_LLINE]; 
@@ -145,15 +198,21 @@ void patch(){
                 fprintf(fichier_tot , write_line);
                 line++;
             }
-
-            printf("type : %d\n",labels[i].type);
+            //printf("type : %d\n",labels[i].type);
             if(labels[i].type == 1){
                 //just if 
                 fgets( read_line, sizeof read_line, fichier_tmp);
                 int backn = '\n';
+            // printf("value i : %d\n",i);
                 char* sindex = strchr(read_line, backn);
+            // printf("valu line pour voir  : %d\n",line);
+            // printf(sindex);
+            // printf("fak i : %d\n",i);
+
                 *sindex = '\0';
+
                 sprintf(write_line,"%s%d\n",read_line,labels[i].to-supprline);
+            // printf("value i : %d\n",i);
                 fprintf (fichier_tot , write_line);
                 line++;
             }else if(labels[i].type == 2){
@@ -162,8 +221,8 @@ void patch(){
                 supprline++;
                 line++;
             }
-            printf(read_line);
-            printf("\n");
+            // printf(read_line);
+            printf("A jmp \n");
 
 
         }
@@ -263,6 +322,7 @@ void checkDefInt(char *name){
     }else{
         printf("already declared\n");
     }
+    print_list(&notre_list);
 }
 
 
@@ -381,4 +441,137 @@ char *affectation(int val){
     char* nom=malloc(TAILLE_MAX_INT+4 * sizeof(char)); 
     sprintf(nom, "%dTemp", nbrVarTemp);
     return nom;
+}
+
+int init_call_fct(){
+    nbr_Params = 0;
+}
+
+void param_fct(char *name){
+    int adress = get_address(name);
+    int adress2 = addTmp();
+
+    nbr_lignes++;
+    fprintf(fichier_tot,"COP %d %d\n",adress2, adress);
+    nbr_Params++;
+}
+
+char * check_fct_call(char *name){ 
+    int i = -1;
+    int test = 1;
+    while(test != 0 && i < nbr_functions){
+        //compare name fct
+         i++;
+         test = strcmp(functions[i],name);
+    }
+    if(i == nbr_functions && !strcmp(functions[i],name) ){
+        printf("Funtion does not exist\n");
+    }else if(nbr_Params != param_functions[i]){
+        printf("Incorect number of arguments put %d instead of %d \n",param_functions[i],nbr_Params);
+    }else{
+        int adress1,adress2,adress3;
+        char* full_name = malloc(sizeof(name));  
+        sprintf(full_name, "%s.txt", name);
+        FILE * function = fopen(full_name, "r");
+        char * commande= malloc( 4);
+        int save_nb_vars = nbrVarTemp;
+        int save_lines = nbr_lignes;
+
+        while(fscanf(function,"%s %d",commande,&adress1)!=EOF){
+            
+            if(strcmp(commande,"ADD")==0){
+                fscanf(function,"%d",&adress2);
+                fscanf(function,"%d",&adress3);
+                fprintf(fichier_tot,"ADD %d %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars,adress3 + save_nb_vars);
+                nbr_lignes++;
+            }
+            else if(strcmp(commande,"MUL")==0){
+                fscanf(function,"%d",&adress2);
+                fscanf(function,"%d",&adress3);
+                fprintf(fichier_tot,"MUL %d %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars,adress3 + save_nb_vars);
+                nbr_lignes++;
+            }
+            else if(strcmp(commande,"SOU")==0){
+                fscanf(function,"%d",&adress2);
+                fscanf(function,"%d",&adress3);
+                fprintf(fichier_tot,"SOU %d %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars,adress3 + save_nb_vars);
+                nbr_lignes++;
+            }
+            else if(strcmp(commande,"DIV")==0){
+                fscanf(function,"%d",&adress2);
+                fscanf(function,"%d",&adress3);
+                fprintf(fichier_tot,"DIV %d %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars,adress3 + save_nb_vars);
+                nbr_lignes++;
+            }
+            else if(strcmp(commande,"COP")==0){
+                fscanf(function,"%d",&adress2);
+                fprintf(fichier_tot,"COP %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars);
+                nbr_lignes++;
+            }
+            else if(strcmp(commande,"AFC")==0){
+                fscanf(function,"%d",&adress2);
+                fscanf(function,"%d",&adress3);
+                fprintf(fichier_tot,"AFC %d %d\n",adress1 + save_nb_vars,adress2);
+                nbr_lignes++;
+            }
+            else if(strcmp(commande,"JMP")==0){
+                fprintf(fichier_tot,"JMP %d\n",adress1 + save_lines);
+                nbr_lignes++;
+            }
+            else if(strcmp(commande,"JMF")==0){
+                fscanf(function,"%d",&adress2);
+                fprintf(fichier_tot,"JMF %d %d\n",adress1 + save_nb_vars,adress2 + save_lines);
+                nbr_lignes++;
+            }
+            else if(strcmp(commande,"INF")==0){
+                fscanf(function,"%d",&adress2);
+                fscanf(function,"%d",&adress3);
+                fprintf(fichier_tot,"INF %d %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars,adress3 + save_nb_vars);
+                nbr_lignes++;
+            }
+            else if(strcmp(commande,"SUP")==0){
+                fscanf(function,"%d",&adress2);
+                fscanf(function,"%d",&adress3);
+                fprintf(fichier_tot,"SUP %d %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars,adress3 + save_nb_vars);
+                nbr_lignes++;
+            }
+            else if(strcmp(commande,"EQU")==0){
+                fscanf(function,"%d",&adress2);
+                fscanf(function,"%d",&adress3);
+                fprintf(fichier_tot,"EQU %d %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars,adress3 + save_nb_vars);
+                nbr_lignes++;
+            }
+            else if(strcmp(commande,"PRI")==0){
+                fprintf(fichier_tot,"PRI %d\n",adress1 + save_nb_vars);
+                nbr_lignes++;
+            }
+        }
+    }
+    for(int j = 0; j<nbr_Params;j++){
+        supprlast(&notre_list);
+    }
+
+    addTmp();
+    
+    char* nom=malloc(TAILLE_MAX_INT+4 * sizeof(char)); 
+    sprintf(nom, "%dTemp", nbrVarTemp);
+    
+    printf(nom);
+    print_list(&notre_list);
+
+    return nom;
+}
+
+void print_return(char * name){
+    int adress, test;
+    if((test = inlist(notre_list,name,&adress)) == 0){      
+        printf("Not declared variable\n");
+    }else if(test == 4){
+        printf("Integer not instanciated\n");
+    }
+
+    if(adress != 0){
+        fprintf(fichier_tot,"COP 0 %d\n", adress);
+        printf("adresse du return : %d\n",adress);
+    }
 }

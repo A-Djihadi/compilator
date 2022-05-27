@@ -1,33 +1,16 @@
+int Hello_world(int time){
+    int test=345;
+    const hello_world = 0;
+    if(test = time){
+        printf(hello_world);
+    }else{
+        printf(test);
+    }
+    return test;
+}
+
 int main(){
-
-    int toto = 5;
-    const M4Trix = 42;
-    int michel = 10, michelle =12;
-    int M0M4_Y3Men_OKAY = 654565465;
-
-    const variableName = 54;
-    if(1=1){
-        printf(toto);
-        printf(toto);
-    }else{
-        printf(toto);
-        printf(toto);
-        printf(toto);
-    }
-   
-    michel = toto + 5;
-    toto = 5* toto + 5 *6   ;
+    int toto=3;
     printf(toto);
-    if(1=1){
-        printf(toto);
-        printf(toto);
-    }else{
-        printf(toto);
-        printf(toto);
-        printf(toto);
-    }
-
-    while(toto=1){
-        printf(toto);
-    }
+    toto = Hello_world(toto);
 }

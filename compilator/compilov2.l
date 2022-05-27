@@ -16,6 +16,7 @@
 "const" {return tCONST ;}
 "int" {return tINT;}
 "printf" {return tPRINTF;} 
+"return" {return tRETURN;} 
 "{" {return tOPEN_BRKT ;}
 "}" {return tCLOSE_BRKT ;}
 "(" {return tOPEN_PAR;}
@@ -39,7 +40,7 @@
 [a-zA-Z][a-zA-Z0-9\_]* {
     yylval.name=malloc(yyleng);
     strcpy(yylval.name,yytext);
-    return tVARIABLE;}
+    return tNAME;}
 
 %%
    /*int main(){
