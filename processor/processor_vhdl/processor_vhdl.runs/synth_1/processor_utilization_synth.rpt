@@ -1,8 +1,8 @@
 Copyright 1986-2018 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2018.2 (lin64) Build 2258646 Thu Jun 14 20:02:38 MDT 2018
-| Date         : Thu May 26 22:10:37 2022
-| Host         : srv-tp06 running 64-bit Ubuntu 20.04.4 LTS
+| Date         : Fri May 27 17:10:50 2022
+| Host         : insa-20552 running 64-bit Ubuntu 20.04.4 LTS
 | Command      : report_utilization -file processor_utilization_synth.rpt -pb processor_utilization_synth.pb
 | Design       : processor
 | Device       : 7a35tcpg236-1

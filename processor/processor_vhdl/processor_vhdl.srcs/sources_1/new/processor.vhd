@@ -40,9 +40,9 @@ architecture Behavioral of processor is
 
 -------------------------------Import Componant------------------------------------
 component RAM is 
-    Port(ADR_IN_RAM,R_IN_RAM : in STD_LOGIC_VECTOR (7 downto 0);
-    RW_RAM,RST_RAM : in STD_LOGIC;
-    R_OUT_RAM: out STD_LOGIC_VECTOR (7 downto 0));
+    Port(ADR,R_IN : in STD_LOGIC_VECTOR (7 downto 0);
+    RW,RST,CLK : in STD_LOGIC;
+    R_OUT: out STD_LOGIC_VECTOR (7 downto 0));
 end component;
 
 component ROM is
@@ -52,9 +52,9 @@ Port(ADR_IN: in STD_LOGIC_VECTOR (7 downto 0);
 end component;
 
 component ALU is
-Port ( OP1_Alu,OP2_Alu: in STD_LOGIC_VECTOR (7 downto 0);
-       CTRL_Alu: in STD_LOGIC_VECTOR (2 downto 0);
-       N_Alu,O_Alu,Z_Alu,C_Alu : out STD_LOGIC;
+Port ( OP1,OP2: in STD_LOGIC_VECTOR (7 downto 0);
+       CTRL_ALU: in STD_LOGIC_VECTOR (2 downto 0);
+       N,O,Z,C : out STD_LOGIC;
        ALU_OUT : out STD_LOGIC_VECTOR (7 downto 0));
 end component;
 
@@ -87,18 +87,25 @@ signal MemReOutA,MemReOutB,MemReOutOP,MemReOutC : std_logic_vector (7 downto 0) 
 signal T_RST: STD_LOGIC := '0';
 signal T_CLK: STD_LOGIC := '1';
 --BANC DE REGISTRE
-signal T_addr_A: std_logic_vector (3 downto 0):= (others => '0');
-signal T_addr_B: std_logic_vector (3 downto 0):= (others => '0');
-signal T_addr_W: std_logic_vector (3 downto 0):= (others => '0');
-signal T_DATA: std_logic_vector (7 downto 0):= (others => '0');
 signal T_W: STD_LOGIC := '0';
+signal T_QA: std_logic_vector(7 downto 0);
+signal T_QB: std_logic_vector(7 downto 0);
 --ROM
 signal IP_IN: STD_LOGIC_VECTOR (7 downto 0):= (others => '0');
 signal T_R_OUT: STD_LOGIC_VECTOR (31 downto 0):=(others => '0'); 
+-------------ALU------------------
+signal T_AluOut:std_logic_vector(7 downto 0);
+signal T_AluCtrl: std_logic_vector(2 downto 0);
+-------------Mémoire des données-------
+signal T_RwRAM :std_logic;
+signal T_RamOut :std_logic_vector(7 downto 0);
 
---------------Outputs---------------
-signal T_QA: std_logic_vector(7 downto 0);
-signal T_QB: std_logic_vector(7 downto 0);
+---------------MUX------------------------
+signal MuxOutBR: std_logic_vector(7 downto 0); 
+signal MuxOutALU: std_logic_vector(7 downto 0); 
+signal MuxOutRAM: std_logic_vector(7 downto 0); 
+signal MuxInRAM: std_logic_vector(7 downto 0); 
+
 ---------------------------------------------------------------------
 begin
 
@@ -110,67 +117,97 @@ PORT MAP (
 
 Banc_Reg:BANC_REGISTRE 
 PORT MAP(
-    addr_A => T_addr_A,
-    addr_B => T_addr_B,
-    addr_W => MemReOutA(7 downto 4),
+    addr_A => LiDiOutB(3 downto 0),
+    addr_B => LiDiOutC(3 downto 0),
+    addr_W => MemReOutA(3 downto 0),
     DATA => MemReOutB,
-    W => MemReOutOP(1),
+    W => T_W,
     RST => RST,
     CLK => CLK_P,
-    
     QA => T_QA,
     QB => T_QB
 );
 
+Ual:ALU
+PORT MAP(
+    OP1 => DiExOutB,
+    OP2 => DiExOutC,
+    CTRL_ALU => T_AluCtrl,    
+    ALU_OUT => T_AluOut
+); 
+
+Mem_donnees:RAM 
+PORT MAP (
+    ADR=>MuxInRAM,
+    R_IN=>ExMemOutB,
+    RW=>T_RwRAM,
+    RST=>RST,
+    CLK=>CLK_P,
+    R_OUT=>T_RamOut); 
+
+
+
+-- Module LC 
+--T_W <= '1' when (MemReOutOP=X"06" or MemReOutOP=X"05" or MemReOutOP=X"04" or MemReOutOP=X"03" or MemReOutOP=X"02" or MemReOutOP=X"01") else '0';
+T_W <= '0' when (MemReOutOP=X"08") else '1';
+T_AluCtrl <= DiExOutOP(2 downto 0) when (DiExOutOP=X"01" or DiExOutOP=X"02" or DiExOutOP=X"03" or DiExOutOP=X"04");
+T_RwRAM <= '0' when ExMemOutOP=X"08" else '1';
+--MUX 
+--MuxOutBR  <= T_QA when (LiDiOutOP=X"05" or LiDiOutOP=X"04" or LiDiOutOP=X"03" or LiDiOutOP=X"02" or LiDiOutOP=X"01" ) else LiDiOutB;
+MuxOutBR  <= LiDiOutB when (LiDiOutOP=X"06" or LiDiOutOP=X"07") else T_QA;
+MuxOutALU <= T_AluOut when (DiExOutOP=X"01" or DiExOutOP=X"02" or DiExOutOP=X"03" or DiExOutOP=X"04") else DiExOutB;
+MuxOutRAM <= T_RamOut when ExMemOutOP=X"07" else ExMemOutB ;
+MuxInRAM  <= ExMemOutA when ExMemOutOP=X"08" else ExMemOutB ;
+
+
 LI_DI: Pipeline 
 PORT MAP(
     A_in=>T_R_OUT(31 downto 24),
-    B_in=>T_R_OUT(23 downto 16), 
-    OP_in=>T_R_OUT(15 downto 8),
+    OP_in=>T_R_OUT(23 downto 16), 
+    B_in=>T_R_OUT(15 downto 8),
     C_in=>T_R_OUT(7 downto 0),
     CLK=>CLK_P,
     A_out=>LiDiOutA,
-    B_out=>LiDiOutB,
     OP_out=>LiDiOutOP,
+    B_out=>LiDiOutB,
     C_out=>LiDiOutC);
 
 DI_EX: Pipeline 
 PORT MAP(
     A_in=>LiDiOutA,
-    B_in=>LiDiOutB, 
-    OP_in=>LiDiOutOP,
-    C_in=>LiDiOutC,
+    OP_in=>LiDiOutOP, 
+    B_in=>MuxOutBR,
+    C_in=>T_QB,
     CLK=>CLK_P,
     A_out=>DiExOutA,
-    B_out=>DiExOutB,
     OP_out=>DiExOutOP,
+    B_out=>DiExOutB,
     C_out=>DiExOutC);
-    
+  
 EX_Mem: Pipeline 
 PORT MAP(
     A_in=>DiExOutA,
-    B_in=>DiExOutB, 
-    OP_in=>DiExOutOP,
+    OP_in=>DiExOutOP, 
+    B_in=>MuxOutALU,
     C_in=>DiExOutC,
     CLK=>CLK_P,
     A_out=>ExMemOutA,
-    B_out=>ExMemOutB,
     OP_out=>ExMemOutOP,
+    B_out=>ExMemOutB,
     C_out=>ExMemOutC);
         
 Mem_RE: Pipeline 
 PORT MAP(
     A_in=>ExMemOutA,
-    B_in=>ExMemOutB, 
-    OP_in=>ExMemOutOP,
+    OP_in=>ExMemOutOP, 
+    B_in=>MuxOutRAM,
     C_in=>ExMemOutC,
     CLK=>CLK_P,
     A_out=>MemReOutA,
-    B_out=>MemReOutB,
     OP_out=>MemReOutOP,
+    B_out=>MemReOutB,
     C_out=>MemReOutC);
     
-    
-    
+        
 
 end Behavioral;

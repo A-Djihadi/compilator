@@ -36,8 +36,46 @@ entity RAM_SIMU is
 end RAM_SIMU;
 
 architecture Behavioral of RAM_SIMU is
+component RAM is
+Port(ADR,R_IN: in STD_LOGIC_VECTOR (7 downto 0);
+    RST,CLK,RW: in STD_LOGIC;
+    R_OUT: out STD_LOGIC_VECTOR (7 downto 0));
+end component;
+
+
+signal T_addr: std_logic_vector (7 downto 0):= (others => '0');
+signal T_R_in: std_logic_vector (7 downto 0):= (others => '0');
+signal T_CLK,T_RST,T_RW: std_logic := '1';
+signal T_R: std_logic_vector (7 downto 0):= (others => '0');
+
+
+constant Clock_period : time := 2 ns;  
 
 begin
+
+--Instantiate the Unit Under Test (UUT)
+Mem_donne_simu: RAM PORT MAP (
+    ADR=> T_addr,
+    R_IN=> T_R_in,
+    RST => T_RST,
+    RW => T_RW,
+    CLK => T_CLK,
+    R_OUT => T_R
+);
+
+
+Clock_process : process
+begin
+    T_CLK <= not(T_CLK);
+    wait for Clock_period/2;
+end process;
+
+T_RST <= '1', '0' after 2ns;
+T_RW  <= '0', '1' after 100ns;
+
+T_R_in <= X"01", X"02" after 50 ns;
+T_addr <= X"00",X"01" after 50ns,X"00" after 100ns, X"01" after 150ns;
+
 
 
 end Behavioral;

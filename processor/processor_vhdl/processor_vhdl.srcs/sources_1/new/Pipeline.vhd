@@ -51,23 +51,17 @@ architecture Behavioral of Pipeline is
     signal T_C : std_logic_vector (7 downto 0):= (others => '0');
 
 begin
-    process (CLK)
-    begin
-        if(CLK'Event and CLK = '1')then
-            T_A <= A_in;
-            T_B <= B_in;
-            T_OP <= OP_in;
-            T_C <= C_in;
-            
-            A_out <= T_A;
-            B_out <= T_B;
-            OP_out<= T_OP;
-            C_out <= T_C;
-               
-        end if;
 
+    T_A <= A_in;
+    T_B <= B_in;
+    T_OP <= OP_in;
+    T_C <= C_in;
     
-    end process;
+    A_out <= T_A;
+    B_out <= T_B;
+    OP_out<= T_OP;
+    C_out <= T_C;
+
 
 
 end Behavioral;

@@ -65,7 +65,16 @@ begin
 end process;
 
 
-T_IP   <= X"00" after 1 ns,X"01" after 50 ns,X"02" after 100 ns, X"FF" after 150 ns;
-T_RST   <= '1' after 1 ns,'0' after 3 ns;
+-- TEST AFC
+--T_IP   <= --X"00", X"01" after 50 ns, X"02" after 100 ns,X"03" after 130 ns;
+-- TEST COP
+--T_IP   <= X"00",X"04" after 100 ns ;
+-- TEST AFC COP
+--T_IP   <= X"00",X"04" after 50 ns, X"02" after 100 ns,X"03" after 150 ns,X"05" after 180 ns;
+-- TEST ALU
+--T_IP   <= X"00", X"01" after 50 ns, X"02" after 100 ns,X"03" after 130 ns,X"06" after 150 ns, X"07" after 180 ns,X"08" after 200 ns,X"09" after 230 ns;
+-- TEST LOAD STORE
+T_IP   <= X"00",X"01" after 20 ns,X"02" after 40 ns, X"0A" after 100 ns, X"0B" after 150 ns,X"0C" after 200 ns,X"0D" after 250 ns;
+T_RST   <= '1','0' after 2 ns;
 
 end Behavioral;

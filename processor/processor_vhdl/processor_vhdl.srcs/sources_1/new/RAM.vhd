@@ -54,7 +54,7 @@ begin
     
         begin
             if(CLK'Event and CLK = '1')then
-                if(RST='0') then -- RST DE LA MEMOIRE A ZERO
+                if(RST='1') then -- RST DE LA MEMOIRE A ZERO
                     REG <= (others => X"00");
                 else
                     if(RW = '0') then -- CAS D'UNE ECRITURE               
@@ -63,9 +63,7 @@ begin
                         R_OUT <= REG(to_integer(unsigned(ADR)));
                     end if;
                 
-                end if;
-            
-        
+                end if;          
 
             end if;
     
