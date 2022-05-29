@@ -9,12 +9,8 @@
 #define SIZE_OF_LLINE 512
 #define SIZE_FONCTION_NAME 256
 #define MAX_NUMBER_OF_FUNCTIONS 5
-<<<<<<< HEAD
 
 // Table of variables
-=======
-// table des signes
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
 struct List notre_list;
 int nbVarTemp=0;
 
@@ -26,23 +22,9 @@ int nb_ligne = 0;
 char functions[MAX_NUMBER_OF_FUNCTIONS][SIZE_FONCTION_NAME];
 int param_functions[MAX_NUMBER_OF_FUNCTIONS];
 
-<<<<<<< HEAD
 int nb_functions = 0;
 int nb_Params=0;
 int nb_Params_call=0;
-=======
-//sprintf(namefile,"%s.txt",name);
-char functions[MAX_NUMBER_OF_FUNCTIONS][SIZE_FONCTION_NAME];
-int param_functions[MAX_NUMBER_OF_FUNCTIONS];
-
-int nbr_functions = 0;
-int nbr_Params=0;
-
-//nommbre de variablees temporaires utilisées actuellemenet
-int nbrVarTemp=0;
-//nombre de lignes en assembleur
-int nbr_lignes = 0;
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
 
 //for the patches
 struct pair labels[MAX_NB_JUMP];
@@ -52,13 +34,8 @@ int supprline = 0;
 
 int addTmp(){
     char* nom=malloc(TAILLE_MAX_INT+4 * sizeof(char));  
-<<<<<<< HEAD
     nbVarTemp++;
     sprintf(nom, "%dTemp", nbVarTemp);
-=======
-    nbrVarTemp++;
-    sprintf(nom, "%dTemp", nbrVarTemp);
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
     insert(&notre_list,nom,3);
     return notre_list.addr_max - 1;
 }
@@ -77,7 +54,6 @@ int get_address(char *name){
 }
 
 void init_fct(char *name){
-<<<<<<< HEAD
     // Reset all needed parameters
     nb_Params=0;
     nbVarTemp = 0;
@@ -87,18 +63,10 @@ void init_fct(char *name){
     sprintf(namefile,"%s.txt",name);
     strcpy( functions[nb_functions], name);
     
-=======
-    nbr_Params=0;
-    char* namefile = malloc(SIZE_FONCTION_NAME);
-    sprintf(namefile,"%s.txt",name);
-    strcpy( functions[nbr_functions], name);
-    nbr_Params = 0;
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
     fichier_tot = fopen(namefile, "w");
 }
 
 void close_fct(){
-<<<<<<< HEAD
     //empty the saved variable
     clearlist(&notre_list);
     //save info for later call 
@@ -112,37 +80,16 @@ void addIntParam(char *name1){
     if(inlist(notre_list,name1,&address) == 0){      
         insert(&notre_list,name1,1);
         nb_Params++;
-=======
-    param_functions[nbr_functions]=nbr_Params;
-    clearlist(&notre_list);
-    nbrVarTemp = 0;
-    close(functions[nbr_functions]);
-    nbr_functions++;
-}
-
-void addIntParam(char *name1){
-    int adress;
-    if(inlist(notre_list,name1,&adress) == 0){      
-        insert(&notre_list,name1,1);
-        nbr_Params++;
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
     }else{
         printf("Should not happen\n");
     }
 }
 
 void addConstParam(char *name1){
-<<<<<<< HEAD
     int address;
     if(inlist(notre_list,name1,&address) == 0){      
         insert(&notre_list,name1,2);
         nb_Params++;
-=======
-    int adress;
-    if(inlist(notre_list,name1,&adress) == 0){      
-        insert(&notre_list,name1,2);
-        nbr_Params++;
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
     }else{
         printf("Should not happen\n");
     }
@@ -150,7 +97,6 @@ void addConstParam(char *name1){
 
 
 
-<<<<<<< HEAD
 void init(){
     // initializes what is needed for the main function
     nb_ligne = 0;
@@ -159,19 +105,9 @@ void init(){
     clearlist(&notre_list);
     
     fichier_tot = fopen("code_assembleur.txt", "w");
-=======
-//called at the start of the compiler, opens the file
-void init(){
-    nbr_lignes = 0;
-    nbr_ifs = 0;
-    
-    fichier_tot = fopen("compilateur_asm.txt", "w");
-    notre_list.addr_max= 0;
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
 }
 
 void close(){
-<<<<<<< HEAD
     clearlist(&notre_list);
 
     // remove the files for the functions
@@ -182,9 +118,6 @@ void close(){
         free(name_file);
     }
 
-=======
-    print_list(&notre_list);
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
     fclose(fichier_tot);
 }
 
@@ -264,7 +197,6 @@ void while_toPatch(int nb_if, int line){
     labels[nb_if].type = 1;
 }
 
-<<<<<<< HEAD
 void patch(char* name){
     //do all modification for the jump
     char* name_file=malloc(4 + sizeof(name));  
@@ -275,15 +207,6 @@ void patch(char* name){
         //first we close it and rename and open again the current one   
         fclose(fichier_tot);
         rename(name_file, "tmp.txt");
-=======
-void patch(char* name_file){
-    //
-    if(nbr_ifs > 0){
-        fclose(fichier_tot);
-
-        rename(name_file, "tmp.txt");
-        fichier_tot = fopen(name_file, "w");
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
         FILE *fichier_tmp = fopen("tmp.txt", "r");
         //create the destination file
         fichier_tot = fopen(name_file, "w");
@@ -301,26 +224,16 @@ void patch(char* name_file){
                 fprintf(fichier_tot , write_line);
                 line++;
             }
-<<<<<<< HEAD
 
             //
-=======
-            //printf("type : %d\n",labels[i].type);
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
             if(labels[i].type == 1){
                 // add the jump address at the end of the line
                 fgets( read_line, sizeof read_line, fichier_tmp);
                 int backn = '\n';
-            // printf("value i : %d\n",i);
                 char* sindex = strchr(read_line, backn);
-            // printf("valu line pour voir  : %d\n",line);
-            // printf(sindex);
-            // printf("fak i : %d\n",i);
-
                 *sindex = '\0';
 
                 sprintf(write_line,"%s%d\n",read_line,labels[i].to-supprline);
-            // printf("value i : %d\n",i);
                 fprintf (fichier_tot , write_line);
                 line++;
 
@@ -330,13 +243,6 @@ void patch(char* name_file){
                 supprline++;
                 line++;
             }
-<<<<<<< HEAD
-=======
-            // printf(read_line);
-            printf("A jmp \n");
-
-
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
         }
 
         while ( fgets( read_line, sizeof read_line, fichier_tmp) != NULL ){
@@ -432,7 +338,6 @@ void checkDefInt(char *name){
     }else{
         printf("already declared\n");
     }
-    print_list(&notre_list);
 }
 
 
@@ -554,7 +459,6 @@ char *affectation(int val){
 }
 
 int init_call_fct(){
-<<<<<<< HEAD
     nb_Params_call = 0;
 }
 
@@ -565,24 +469,11 @@ void param_fct(char *name){
     nb_ligne++;
     fprintf(fichier_tot,"COP %d %d\n",address2, address);
     nb_Params_call++;
-=======
-    nbr_Params = 0;
-}
-
-void param_fct(char *name){
-    int adress = get_address(name);
-    int adress2 = addTmp();
-
-    nbr_lignes++;
-    fprintf(fichier_tot,"COP %d %d\n",adress2, adress);
-    nbr_Params++;
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
 }
 
 char * check_fct_call(char *name){ 
     int i = -1;
     int test = 1;
-<<<<<<< HEAD
     while(test != 0 && i < nb_functions){
         //find the right fct
         i++;
@@ -595,24 +486,10 @@ char * check_fct_call(char *name){
         printf("Incorect number of arguments put %d instead of %d \n",param_functions[i],nb_Params_call);
     }else{
         int address1,address2,address3;
-=======
-    while(test != 0 && i < nbr_functions){
-        //compare name fct
-         i++;
-         test = strcmp(functions[i],name);
-    }
-    if(i == nbr_functions && !strcmp(functions[i],name) ){
-        printf("Funtion does not exist\n");
-    }else if(nbr_Params != param_functions[i]){
-        printf("Incorect number of arguments put %d instead of %d \n",param_functions[i],nbr_Params);
-    }else{
-        int adress1,adress2,adress3;
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
         char* full_name = malloc(sizeof(name));  
         sprintf(full_name, "%s.txt", name);
         FILE * function = fopen(full_name, "r");
         char * commande= malloc( 4);
-<<<<<<< HEAD
         int save_nb_vars = nbVarTemp;
         int save_lines = nb_ligne;
 
@@ -690,124 +567,25 @@ char * check_fct_call(char *name){
     }
 
     for(int j = 0; j<nb_Params_call;j++){
-=======
-        int save_nb_vars = nbrVarTemp;
-        int save_lines = nbr_lignes;
-
-        while(fscanf(function,"%s %d",commande,&adress1)!=EOF){
-            
-            if(strcmp(commande,"ADD")==0){
-                fscanf(function,"%d",&adress2);
-                fscanf(function,"%d",&adress3);
-                fprintf(fichier_tot,"ADD %d %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars,adress3 + save_nb_vars);
-                nbr_lignes++;
-            }
-            else if(strcmp(commande,"MUL")==0){
-                fscanf(function,"%d",&adress2);
-                fscanf(function,"%d",&adress3);
-                fprintf(fichier_tot,"MUL %d %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars,adress3 + save_nb_vars);
-                nbr_lignes++;
-            }
-            else if(strcmp(commande,"SOU")==0){
-                fscanf(function,"%d",&adress2);
-                fscanf(function,"%d",&adress3);
-                fprintf(fichier_tot,"SOU %d %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars,adress3 + save_nb_vars);
-                nbr_lignes++;
-            }
-            else if(strcmp(commande,"DIV")==0){
-                fscanf(function,"%d",&adress2);
-                fscanf(function,"%d",&adress3);
-                fprintf(fichier_tot,"DIV %d %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars,adress3 + save_nb_vars);
-                nbr_lignes++;
-            }
-            else if(strcmp(commande,"COP")==0){
-                fscanf(function,"%d",&adress2);
-                fprintf(fichier_tot,"COP %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars);
-                nbr_lignes++;
-            }
-            else if(strcmp(commande,"AFC")==0){
-                fscanf(function,"%d",&adress2);
-                fscanf(function,"%d",&adress3);
-                fprintf(fichier_tot,"AFC %d %d\n",adress1 + save_nb_vars,adress2);
-                nbr_lignes++;
-            }
-            else if(strcmp(commande,"JMP")==0){
-                fprintf(fichier_tot,"JMP %d\n",adress1 + save_lines);
-                nbr_lignes++;
-            }
-            else if(strcmp(commande,"JMF")==0){
-                fscanf(function,"%d",&adress2);
-                fprintf(fichier_tot,"JMF %d %d\n",adress1 + save_nb_vars,adress2 + save_lines);
-                nbr_lignes++;
-            }
-            else if(strcmp(commande,"INF")==0){
-                fscanf(function,"%d",&adress2);
-                fscanf(function,"%d",&adress3);
-                fprintf(fichier_tot,"INF %d %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars,adress3 + save_nb_vars);
-                nbr_lignes++;
-            }
-            else if(strcmp(commande,"SUP")==0){
-                fscanf(function,"%d",&adress2);
-                fscanf(function,"%d",&adress3);
-                fprintf(fichier_tot,"SUP %d %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars,adress3 + save_nb_vars);
-                nbr_lignes++;
-            }
-            else if(strcmp(commande,"EQU")==0){
-                fscanf(function,"%d",&adress2);
-                fscanf(function,"%d",&adress3);
-                fprintf(fichier_tot,"EQU %d %d %d\n",adress1 + save_nb_vars,adress2 + save_nb_vars,adress3 + save_nb_vars);
-                nbr_lignes++;
-            }
-            else if(strcmp(commande,"PRI")==0){
-                fprintf(fichier_tot,"PRI %d\n",adress1 + save_nb_vars);
-                nbr_lignes++;
-            }
-        }
-    }
-    for(int j = 0; j<nbr_Params;j++){
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
         supprlast(&notre_list);
     }
 
     addTmp();
-<<<<<<< HEAD
 
     char* nom=malloc(TAILLE_MAX_INT+4 * sizeof(char)); 
     sprintf(nom, "%dTemp", nbVarTemp);
-=======
-    
-    char* nom=malloc(TAILLE_MAX_INT+4 * sizeof(char)); 
-    sprintf(nom, "%dTemp", nbrVarTemp);
-    
-    printf(nom);
-    print_list(&notre_list);
-
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
     return nom;
 }
 
 void print_return(char * name){
-<<<<<<< HEAD
     int address, test;
     if((test = inlist(notre_list,name,&address)) == 0){      
-=======
-    int adress, test;
-    if((test = inlist(notre_list,name,&adress)) == 0){      
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
         printf("Not declared variable\n");
     }else if(test == 4){
         printf("Integer not instanciated\n");
     }
 
-<<<<<<< HEAD
     if(address != 0){
         fprintf(fichier_tot,"COP 0 %d\n", address);
     }
 }
-=======
-    if(adress != 0){
-        fprintf(fichier_tot,"COP 0 %d\n", adress);
-        printf("adresse du return : %d\n",adress);
-    }
-}
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c

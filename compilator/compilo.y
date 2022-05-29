@@ -10,11 +10,7 @@ struct double_int{
 
 %}
 
-<<<<<<< HEAD
 %union { int nb ; char *name; struct double_int *two;}
-=======
-%union { int nb ; char *name; struct fak *two;}
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
 %token tMAIN tOPEN_BRKT tCLOSE_BRKT tCONST tADD tSUB tMUL tDIV tEQL tOPEN_PAR tCLOSE_PAR tCOMMA tSEMICOLON tPRINTF tINT tELSE tINF tSUP tRETURN
 %token <nb> tNUM 
 %token <two> tIF tWHILE
@@ -26,23 +22,14 @@ struct double_int{
 %start Program
 %%
 
-<<<<<<< HEAD
 Program:  Functions tINT tMAIN {init();} tOPEN_BRKT Declare Body tCLOSE_BRKT{patch("code_assembleur"); close();}
         |  tINT tMAIN {init();} tOPEN_BRKT Declare Body tCLOSE_BRKT{ patch("code_assembleur"); close();};
-=======
-Program:  Functions tINT {printf("MAIIIIN \n");} tMAIN {init();} tOPEN_BRKT Declare Body tCLOSE_BRKT{ patch("compilateur_asm.txt"); close();}
-        |  tINT{printf("MAIN \n");} tMAIN {init();} tOPEN_BRKT Declare Body tCLOSE_BRKT{ patch("compilateur_asm.txt"); close();};
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
 
 Functions: Functions A_function 
         |  A_function
         ;
 
-<<<<<<< HEAD
 A_function : tINT tNAME {init_fct($2);} tOPEN_PAR Parameters tCLOSE_PAR tOPEN_BRKT Declare Body Return  tCLOSE_BRKT {patch($2);close_fct();};
-=======
-A_function : tINT tNAME {init_fct($2);} tOPEN_PAR Parameters tCLOSE_PAR tOPEN_BRKT Declare Body Return tCLOSE_BRKT {patch("Hello_world.txt");close_fct();};
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
 
 Return : tRETURN ExprArit tSEMICOLON {print_return($2);};
 
@@ -109,7 +96,6 @@ ExprArit: VarOrNum {$$ = strdup($1); }
         ;
 
 
-<<<<<<< HEAD
 VarOrNum: tNAME {testVar($1);$$=$1;}
         | tNUM {$$ = affectation($1);}
         | tNAME tOPEN_PAR {init_call_fct();} Parameters_call tCLOSE_PAR {$$ = check_fct_call($1);}   
@@ -117,15 +103,6 @@ VarOrNum: tNAME {testVar($1);$$=$1;}
 
 Parameters_call:  tNAME { param_fct($1);} tCOMMA Parameters_call
                 | tNAME { param_fct($1);}
-=======
-VarOrNum: tNAME {testVar($1);$$=$1;printf("Je suis passé par la %s\n",$$);}
-        | tNUM {$$ = affectation($1);}
-        | tNAME tOPEN_PAR {init_call_fct();}  Parameters_call tCLOSE_PAR {$$ = check_fct_call($1);}   
-        ; 
-
-Parameters_call: tNAME { param_fct($1);} tCOMMA Parameters_call
-                |tNAME { param_fct($1);}
->>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
                 ;
 
 %%
