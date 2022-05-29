@@ -66,5 +66,8 @@ void param_fct(char *name);
 void print_return(char * name);
 char * check_fct_call(char *name);
 
+<<<<<<< HEAD
+=======
 
+>>>>>>> d986336d4ff95bbf3b7df676c44fbffb16dcf24c
 #endif
