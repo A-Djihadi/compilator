@@ -4,7 +4,7 @@
 -- 
 -- Create Date: 07.04.2022 09:49:42
 -- Design Name: 
--- Module Name: RAM - Behavioral
+-- Module Name: DataMem - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -32,7 +32,7 @@ use IEEE.NUMERIC_STD.all;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity RAM is
+entity DataMem is
     Port ( ADR : in STD_LOGIC_VECTOR (7 downto 0);
            R_IN : in STD_LOGIC_VECTOR (7 downto 0);
            
@@ -41,12 +41,11 @@ entity RAM is
            CLK : in STD_LOGIC;
            
            R_OUT : out STD_LOGIC_VECTOR (7 downto 0));
-end RAM;
+end DataMem;
 
-architecture Behavioral of RAM is
+architecture Behavioral of DataMem is
     type Mem is array (0 to 255) of STD_LOGIC_VECTOR (7 downto 0);
     signal REG : Mem;
-
 
 begin
 

@@ -39,13 +39,13 @@ end processor;
 architecture Behavioral of processor is
 
 -------------------------------Import Component------------------------------------
-component RAM is 
+component DataMem is 
     Port(ADR,R_IN : in STD_LOGIC_VECTOR (7 downto 0);
     RW,RST,CLK : in STD_LOGIC;
     R_OUT: out STD_LOGIC_VECTOR (7 downto 0));
 end component;
 
-component ROM is
+component InstructionMem is
 Port(ADR_IN: in STD_LOGIC_VECTOR (7 downto 0);
     CLK : in STD_LOGIC;
     R_OUT: out STD_LOGIC_VECTOR (31 downto 0));
@@ -89,7 +89,7 @@ signal T_W: STD_LOGIC := '0';
 signal T_QA: std_logic_vector(7 downto 0);
 signal T_QB: std_logic_vector(7 downto 0);
 
---------------ROM-------------
+--------------InstructionMem-------------
 signal T_R_OUT: STD_LOGIC_VECTOR (31 downto 0):=(others => '0'); 
 
 -------------ALU------------------
@@ -111,7 +111,7 @@ signal MuxInRAM: std_logic_vector(7 downto 0);
 
 begin
 
-Mem_innstruction:ROM 
+Mem_innstruction:InstructionMem 
 PORT MAP (
     ADR_IN=>IP,
     CLK=>CLK_P,
@@ -138,7 +138,7 @@ PORT MAP(
     ALU_OUT => T_AluOut
 ); 
 
-Mem_donnees:RAM 
+Mem_donnees:DataMem 
 PORT MAP (
     ADR=>MuxInRAM,
     R_IN=>ExMemOutB,

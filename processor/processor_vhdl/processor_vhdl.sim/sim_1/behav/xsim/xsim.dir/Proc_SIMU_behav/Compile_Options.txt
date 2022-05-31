@@ -1,1 +1,0 @@
--wto "85fdfe322208446db5d9005212aa50eb" --incr --debug "typical" --relax --mt "8" -L "xil_defaultlib" -L "secureip" --snapshot "Proc_SIMU_behav" "xil_defaultlib.Proc_SIMU" -log "elaborate.log" 
