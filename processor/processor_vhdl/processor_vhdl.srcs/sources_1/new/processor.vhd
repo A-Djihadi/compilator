@@ -33,12 +33,12 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 entity processor is
   Port (IP : in STD_LOGIC_VECTOR (7 downto 0);
-    RST,CLK_P : in STD_LOGIC);
+    RST,CLK_P : in STD_LOGIC);  -- RST and CLK_P will be share with all the other components
 end processor;
 
 architecture Behavioral of processor is
 
--------------------------------Import Componant------------------------------------
+-------------------------------Import Component------------------------------------
 component RAM is 
     Port(ADR,R_IN : in STD_LOGIC_VECTOR (7 downto 0);
     RW,RST,CLK : in STD_LOGIC;
@@ -75,38 +75,40 @@ end component;
 ------------------------END COMPONENTS------------------------
 
 
---------------Inputs----------------
+--------------Pipeline Outputs---------------
 
 signal LiDiOutA,LiDiOutB,LiDiOutOP,LiDiOutC : std_logic_vector (7 downto 0) := (others => '0');
 signal DiExOutA,DiExOutB,DiExOutOP,DiExOutC : std_logic_vector (7 downto 0) := (others => '0');
 signal ExMemOutA,ExMemOutB,ExMemOutOP,ExMemOutC : std_logic_vector (7 downto 0) := (others => '0');
-signal MemReOutA,MemReOutB,MemReOutOP,MemReOutC : std_logic_vector (7 downto 0) := (others => '0');
+signal MemReOutA,MemReOutB,MemReOutOP : std_logic_vector (7 downto 0) := (others => '0');
 
+----------Signal between components---------- 
 
------------Common inputs-----------
-signal T_RST: STD_LOGIC := '0';
-signal T_CLK: STD_LOGIC := '1';
---BANC DE REGISTRE
+--------BANC DE REGISTRE--------
 signal T_W: STD_LOGIC := '0';
 signal T_QA: std_logic_vector(7 downto 0);
 signal T_QB: std_logic_vector(7 downto 0);
---ROM
-signal IP_IN: STD_LOGIC_VECTOR (7 downto 0):= (others => '0');
+
+--------------ROM-------------
 signal T_R_OUT: STD_LOGIC_VECTOR (31 downto 0):=(others => '0'); 
+
 -------------ALU------------------
 signal T_AluOut:std_logic_vector(7 downto 0);
 signal T_AluCtrl: std_logic_vector(2 downto 0);
--------------Mémoire des données-------
+
+---------Mémoire des données-------
 signal T_RwRAM :std_logic;
 signal T_RamOut :std_logic_vector(7 downto 0);
 
----------------MUX------------------------
+---------------MUX-------------------
 signal MuxOutBR: std_logic_vector(7 downto 0); 
 signal MuxOutALU: std_logic_vector(7 downto 0); 
 signal MuxOutRAM: std_logic_vector(7 downto 0); 
 signal MuxInRAM: std_logic_vector(7 downto 0); 
 
----------------------------------------------------------------------
+
+---------------------------PORT MAP COMPOENENTS---------------------- 
+
 begin
 
 Mem_innstruction:ROM 
@@ -147,19 +149,17 @@ PORT MAP (
 
 
 
--- Module LC 
---T_W <= '1' when (MemReOutOP=X"06" or MemReOutOP=X"05" or MemReOutOP=X"04" or MemReOutOP=X"03" or MemReOutOP=X"02" or MemReOutOP=X"01") else '0';
+------------------------------------- Module LC ----------------------------------------------------------------
 T_W <= '0' when (MemReOutOP=X"08") else '1';
 T_AluCtrl <= DiExOutOP(2 downto 0) when (DiExOutOP=X"01" or DiExOutOP=X"02" or DiExOutOP=X"03" or DiExOutOP=X"04");
 T_RwRAM <= '0' when ExMemOutOP=X"08" else '1';
---MUX 
---MuxOutBR  <= T_QA when (LiDiOutOP=X"05" or LiDiOutOP=X"04" or LiDiOutOP=X"03" or LiDiOutOP=X"02" or LiDiOutOP=X"01" ) else LiDiOutB;
+-----------------------------------------MUX-------------------------------------------------------------------- 
 MuxOutBR  <= LiDiOutB when (LiDiOutOP=X"06" or LiDiOutOP=X"07") else T_QA;
 MuxOutALU <= T_AluOut when (DiExOutOP=X"01" or DiExOutOP=X"02" or DiExOutOP=X"03" or DiExOutOP=X"04") else DiExOutB;
 MuxOutRAM <= T_RamOut when ExMemOutOP=X"07" else ExMemOutB ;
 MuxInRAM  <= ExMemOutA when ExMemOutOP=X"08" else ExMemOutB ;
 
-
+---------------------------------PORT MAP Pipeline-------------------------------------
 LI_DI: Pipeline 
 PORT MAP(
     A_in=>T_R_OUT(31 downto 24),
@@ -193,8 +193,7 @@ PORT MAP(
     CLK=>CLK_P,
     A_out=>ExMemOutA,
     OP_out=>ExMemOutOP,
-    B_out=>ExMemOutB,
-    C_out=>ExMemOutC);
+    B_out=>ExMemOutB);
         
 Mem_RE: Pipeline 
 PORT MAP(
@@ -205,8 +204,7 @@ PORT MAP(
     CLK=>CLK_P,
     A_out=>MemReOutA,
     OP_out=>MemReOutOP,
-    B_out=>MemReOutB,
-    C_out=>MemReOutC);
+    B_out=>MemReOutB);
     
         
 

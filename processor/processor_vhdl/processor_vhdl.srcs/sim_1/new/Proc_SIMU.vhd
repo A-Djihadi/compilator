@@ -64,17 +64,27 @@ begin
     wait for Clock_period/2;
 end process;
 
+---------------------------------TEST UNITAIRE CHEMIN UNITAIRE---------------------------------------
 
 -- TEST AFC
 --T_IP   <= --X"00", X"01" after 50 ns, X"02" after 100 ns,X"03" after 130 ns;
+
 -- TEST COP
---T_IP   <= X"00",X"04" after 100 ns ;
+--T_IP   <= X"01",X"04" after 50 ns ;
+
 -- TEST AFC COP
---T_IP   <= X"00",X"04" after 50 ns, X"02" after 100 ns,X"03" after 150 ns,X"05" after 180 ns;
+--T_IP   <= X"01",X"04" after 50 ns, X"02" after 100 ns,X"03" after 150 ns,X"05" after 180 ns;
+
 -- TEST ALU
---T_IP   <= X"00", X"01" after 50 ns, X"02" after 100 ns,X"03" after 130 ns,X"06" after 150 ns, X"07" after 180 ns,X"08" after 200 ns,X"09" after 230 ns;
+--T_IP   <= X"01", X"02" after 50 ns, X"02" after 80 ns,X"03" after 110 ns,X"06" after 140 ns, X"07" after 170 ns,X"08" after 200 ns,X"09" after 230 ns;
+
 -- TEST LOAD STORE
-T_IP   <= X"00",X"01" after 20 ns,X"02" after 40 ns, X"0A" after 100 ns, X"0B" after 150 ns,X"0C" after 200 ns,X"0D" after 250 ns;
+--T_IP   <= X"00",X"01" after 20 ns,X"02" after 40 ns, X"0C" after 100 ns, X"0D" after 150 ns,X"0E" after 200 ns,X"0F" after 250 ns;
+
+---------------------------------------TEST COMPLET------------------------------------------------------
+T_IP   <= X"00",X"10" after 20 ns,X"11" after 40 ns, X"12" after 60 ns, X"13" after 80 ns,X"08" after 100 ns,X"0A" after 120 ns, X"14" after 140 ns, X"17" after 160 ns, X"0C" after 180 ns, X"0D" after 200 ns, X"0E" after 220 ns, X"0F" after 240 ns;
+
+
 T_RST   <= '1','0' after 2 ns;
 
 end Behavioral;

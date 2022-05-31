@@ -56,10 +56,10 @@ begin
     
     begin
         if(CLK'Event and CLK = '1')then
-            if RST = '1' then
+            if RST = '1' then      --RST Banc de Registre
                 REG <= (others => X"00");
             else
-                if W = '1' then                    --Permission Write
+                if W = '1' then    --Permission Write
                     REG(to_integer(unsigned(addr_W))) <= DATA; --On écrit la DATA dans l'adresse de W
                 end if;
             end if;

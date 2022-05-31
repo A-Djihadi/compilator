@@ -319,3 +319,29 @@ INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/process
 INFO: [VRFC 10-307] analyzing entity RAM_SIMU
 INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd" into library xil_defaultlib
 INFO: [VRFC 10-307] analyzing entity Proc_SIMU
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Proc_SIMU
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ALU
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity processor
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity BANC_REGISTRE
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/compilator/compilator.srcs/sources_1/new/ROM.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ROM
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Proc_SIMU
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/compilator/compilator.srcs/sources_1/new/ROM.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ROM
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Proc_SIMU
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Proc_SIMU
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sim_1/new/Proc_SIMU.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity Proc_SIMU
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/compilator/compilator.srcs/sources_1/new/ROM.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ROM
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/compilator/compilator.srcs/sources_1/new/ROM.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ROM
+INFO: [VRFC 10-163] Analyzing VHDL file "/home/ahamdy/compilator/compilator.srcs/sources_1/new/ROM.vhd" into library xil_defaultlib
+INFO: [VRFC 10-307] analyzing entity ROM

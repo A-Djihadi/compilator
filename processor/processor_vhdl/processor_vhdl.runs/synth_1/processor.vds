@@ -2,8 +2,8 @@
 # Vivado v2018.2 (64-bit)
 # SW Build 2258646 on Thu Jun 14 20:02:38 MDT 2018
 # IP Build 2256618 on Thu Jun 14 22:10:49 MDT 2018
-# Start of session at: Fri May 27 17:10:25 2022
-# Process ID: 20023
+# Start of session at: Mon May 30 11:41:43 2022
+# Process ID: 12246
 # Current directory: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1
 # Command line: vivado -log processor.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source processor.tcl
 # Log file: /home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/processor.vds
@@ -15,25 +15,25 @@ Starting synth_design
 Attempting to get a license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: [Common 17-349] Got license for feature 'Synthesis' and/or device 'xc7a35t'
 INFO: Launching helper process for spawning children vivado processes
-INFO: Helper process launched with PID 20038 
+INFO: Helper process launched with PID 12262 
 ---------------------------------------------------------------------------------
-Starting Synthesize : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 1255.273 ; gain = 83.828 ; free physical = 10128 ; free virtual = 21664
+Starting Synthesize : Time (s): cpu = 00:00:01 ; elapsed = 00:00:02 . Memory (MB): peak = 1255.273 ; gain = 83.828 ; free physical = 11124 ; free virtual = 22448
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-638] synthesizing module 'processor' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:39]
-INFO: [Synth 8-3491] module 'ROM' declared at '/home/ahamdy/compilator/compilator.srcs/sources_1/new/ROM.vhd:35' bound to instance 'Mem_innstruction' of component 'ROM' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:112]
+INFO: [Synth 8-3491] module 'ROM' declared at '/home/ahamdy/compilator/compilator.srcs/sources_1/new/ROM.vhd:35' bound to instance 'Mem_innstruction' of component 'ROM' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:114]
 INFO: [Synth 8-638] synthesizing module 'ROM' [/home/ahamdy/compilator/compilator.srcs/sources_1/new/ROM.vhd:41]
 INFO: [Synth 8-256] done synthesizing module 'ROM' (1#1) [/home/ahamdy/compilator/compilator.srcs/sources_1/new/ROM.vhd:41]
-INFO: [Synth 8-3491] module 'BANC_REGISTRE' declared at '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:36' bound to instance 'Banc_Reg' of component 'BANC_REGISTRE' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:118]
+INFO: [Synth 8-3491] module 'BANC_REGISTRE' declared at '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:36' bound to instance 'Banc_Reg' of component 'BANC_REGISTRE' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:120]
 INFO: [Synth 8-638] synthesizing module 'BANC_REGISTRE' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:49]
 INFO: [Synth 8-256] done synthesizing module 'BANC_REGISTRE' (2#1) [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/BANC_REGISTRE.vhd:49]
-INFO: [Synth 8-3491] module 'ALU' declared at '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:36' bound to instance 'Ual' of component 'ALU' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:131]
+INFO: [Synth 8-3491] module 'ALU' declared at '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:36' bound to instance 'Ual' of component 'ALU' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:133]
 INFO: [Synth 8-638] synthesizing module 'ALU' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:51]
 WARNING: [Synth 8-6426] Mix of Sync and Async assignments to register 'TKN_reg' in module 'ALU' in the same process may cause logic issues. 
- Please split the sync and async parts into different processes [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:66]
+ Please split the sync and async parts into different processes [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:68]
 WARNING: [Synth 8-6426] Mix of Sync and Async assignments to register 'TKN_reg' in module 'ALU' in the same process may cause logic issues. 
- Please split the sync and async parts into different processes [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:66]
+ Please split the sync and async parts into different processes [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:68]
 INFO: [Synth 8-256] done synthesizing module 'ALU' (3#1) [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:51]
-INFO: [Synth 8-3491] module 'RAM' declared at '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/RAM.vhd:35' bound to instance 'Mem_donnees' of component 'RAM' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:139]
+INFO: [Synth 8-3491] module 'RAM' declared at '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/RAM.vhd:35' bound to instance 'Mem_donnees' of component 'RAM' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:141]
 INFO: [Synth 8-638] synthesizing module 'RAM' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/RAM.vhd:46]
 INFO: [Synth 8-256] done synthesizing module 'RAM' (4#1) [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/RAM.vhd:46]
 INFO: [Synth 8-3491] module 'Pipeline' declared at '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/Pipeline.vhd:34' bound to instance 'LI_DI' of component 'Pipeline' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:163]
@@ -41,14 +41,14 @@ INFO: [Synth 8-638] synthesizing module 'Pipeline' [/home/ahamdy/Bureau/prog_sys
 INFO: [Synth 8-256] done synthesizing module 'Pipeline' (5#1) [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/Pipeline.vhd:46]
 INFO: [Synth 8-3491] module 'Pipeline' declared at '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/Pipeline.vhd:34' bound to instance 'DI_EX' of component 'Pipeline' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:175]
 INFO: [Synth 8-3491] module 'Pipeline' declared at '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/Pipeline.vhd:34' bound to instance 'EX_Mem' of component 'Pipeline' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:187]
-INFO: [Synth 8-3491] module 'Pipeline' declared at '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/Pipeline.vhd:34' bound to instance 'Mem_RE' of component 'Pipeline' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:199]
+INFO: [Synth 8-3491] module 'Pipeline' declared at '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/Pipeline.vhd:34' bound to instance 'Mem_RE' of component 'Pipeline' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:198]
 INFO: [Synth 8-256] done synthesizing module 'processor' (6#1) [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:39]
 WARNING: [Synth 8-3331] design Pipeline has unconnected port CLK
 ---------------------------------------------------------------------------------
-Finished Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1309.898 ; gain = 138.453 ; free physical = 10128 ; free virtual = 21663
+Finished Synthesize : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1309.898 ; gain = 138.453 ; free physical = 11122 ; free virtual = 22448
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1309.898 ; gain = 138.453 ; free physical = 10129 ; free virtual = 21665
+Finished Constraint Validation : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1309.898 ; gain = 138.453 ; free physical = 11124 ; free virtual = 22451
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
@@ -56,7 +56,7 @@ Start Loading Part and Timing Information
 Loading part: xc7a35tcpg236-1
 INFO: [Device 21-403] Loading part xc7a35tcpg236-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1317.902 ; gain = 146.457 ; free physical = 10129 ; free virtual = 21665
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:02 ; elapsed = 00:00:03 . Memory (MB): peak = 1317.902 ; gain = 146.457 ; free physical = 11123 ; free virtual = 22450
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-5544] ROM "REG_reg[0]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
 INFO: [Synth 8-5544] ROM "REG_reg[1]" won't be mapped to Block RAM because address size (4) smaller than threshold (5)
@@ -178,14 +178,14 @@ INFO: [Synth 8-5546] ROM "REG_reg[94]" won't be mapped to RAM because it is too 
 INFO: [Synth 8-5546] ROM "REG_reg[95]" won't be mapped to RAM because it is too sparse
 INFO: [Synth 8-5546] ROM "REG_reg[96]" won't be mapped to RAM because it is too sparse
 INFO: [Common 17-14] Message 'Synth 8-5546' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
-WARNING: [Synth 8-327] inferring latch for variable 'N_reg' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:69]
-WARNING: [Synth 8-327] inferring latch for variable 'O_reg' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:72]
-WARNING: [Synth 8-327] inferring latch for variable 'Z_reg' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:68]
-WARNING: [Synth 8-327] inferring latch for variable 'C_reg' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:67]
-WARNING: [Synth 8-327] inferring latch for variable 'TKN_reg' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:66]
-WARNING: [Synth 8-327] inferring latch for variable 'T_AluCtrl_reg' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:135]
+WARNING: [Synth 8-327] inferring latch for variable 'N_reg' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:71]
+WARNING: [Synth 8-327] inferring latch for variable 'O_reg' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:74]
+WARNING: [Synth 8-327] inferring latch for variable 'Z_reg' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:70]
+WARNING: [Synth 8-327] inferring latch for variable 'C_reg' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:69]
+WARNING: [Synth 8-327] inferring latch for variable 'TKN_reg' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/ALU.vhd:68]
+WARNING: [Synth 8-327] inferring latch for variable 'T_AluCtrl_reg' [/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.srcs/sources_1/new/processor.vhd:137]
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1335.934 ; gain = 164.488 ; free physical = 10066 ; free virtual = 21602
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:04 ; elapsed = 00:00:05 . Memory (MB): peak = 1335.934 ; gain = 164.488 ; free physical = 11042 ; free virtual = 22386
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -377,7 +377,7 @@ WARNING: [Synth 8-3332] Sequential element (Mem_donnees/REG_reg[9][1]) is unused
 WARNING: [Synth 8-3332] Sequential element (Mem_donnees/REG_reg[9][0]) is unused and will be removed from module processor.
 INFO: [Common 17-14] Message 'Synth 8-3332' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:16 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 9977 ; free virtual = 21517
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:16 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 10950 ; free virtual = 22300
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -390,7 +390,7 @@ No constraint files found.
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:16 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 9977 ; free virtual = 21517
+Finished Timing Optimization : Time (s): cpu = 00:00:09 ; elapsed = 00:00:17 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 10951 ; free virtual = 22300
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -402,7 +402,7 @@ Report RTL Partitions:
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:09 ; elapsed = 00:00:16 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 9977 ; free virtual = 21517
+Finished Technology Mapping : Time (s): cpu = 00:00:09 ; elapsed = 00:00:17 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 10951 ; free virtual = 22300
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -426,7 +426,7 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 9977 ; free virtual = 21517
+Finished IO Insertion : Time (s): cpu = 00:00:10 ; elapsed = 00:00:17 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 10951 ; free virtual = 22301
 ---------------------------------------------------------------------------------
 
 Report Check Netlist: 
@@ -439,7 +439,7 @@ Report Check Netlist:
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 9977 ; free virtual = 21517
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:10 ; elapsed = 00:00:17 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 10951 ; free virtual = 22301
 ---------------------------------------------------------------------------------
 
 Report RTL Partitions: 
@@ -451,25 +451,25 @@ Report RTL Partitions:
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 9977 ; free virtual = 21517
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:10 ; elapsed = 00:00:17 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 10951 ; free virtual = 22301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 9977 ; free virtual = 21517
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:10 ; elapsed = 00:00:17 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 10951 ; free virtual = 22301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 9977 ; free virtual = 21517
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:10 ; elapsed = 00:00:17 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 10951 ; free virtual = 22301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 9977 ; free virtual = 21517
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:10 ; elapsed = 00:00:17 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 10951 ; free virtual = 22301
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -494,11 +494,11 @@ Report Instance Areas:
 |1     |top      |       |     0|
 +------+---------+-------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 9977 ; free virtual = 21517
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:10 ; elapsed = 00:00:17 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 10951 ; free virtual = 22301
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 2248 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 9977 ; free virtual = 21517
-Synthesis Optimization Complete : Time (s): cpu = 00:00:10 ; elapsed = 00:00:16 . Memory (MB): peak = 1425.027 ; gain = 253.574 ; free physical = 9987 ; free virtual = 21527
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:10 ; elapsed = 00:00:17 . Memory (MB): peak = 1425.020 ; gain = 253.574 ; free physical = 10951 ; free virtual = 22301
+Synthesis Optimization Complete : Time (s): cpu = 00:00:10 ; elapsed = 00:00:17 . Memory (MB): peak = 1425.027 ; gain = 253.574 ; free physical = 10961 ; free virtual = 22311
 INFO: [Project 1-571] Translating synthesized netlist
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
@@ -508,9 +508,9 @@ No Unisim elements were transformed.
 INFO: [Common 17-83] Releasing license: Synthesis
 149 Infos, 109 Warnings, 0 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:11 ; elapsed = 00:00:17 . Memory (MB): peak = 1503.043 ; gain = 343.223 ; free physical = 9954 ; free virtual = 21494
+synth_design: Time (s): cpu = 00:00:11 ; elapsed = 00:00:18 . Memory (MB): peak = 1504.043 ; gain = 344.223 ; free physical = 10912 ; free virtual = 22276
 WARNING: [Constraints 18-5210] No constraint will be written out.
 INFO: [Common 17-1381] The checkpoint '/home/ahamdy/Bureau/prog_system/processor/processor_vhdl/processor_vhdl.runs/synth_1/processor.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file processor_utilization_synth.rpt -pb processor_utilization_synth.pb
-report_utilization: Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.11 . Memory (MB): peak = 1527.055 ; gain = 0.000 ; free physical = 9957 ; free virtual = 21497
-INFO: [Common 17-206] Exiting Vivado at Fri May 27 17:10:50 2022...
+report_utilization: Time (s): cpu = 00:00:00.07 ; elapsed = 00:00:00.10 . Memory (MB): peak = 1528.055 ; gain = 0.000 ; free physical = 10915 ; free virtual = 22279
+INFO: [Common 17-206] Exiting Vivado at Mon May 30 11:42:09 2022...

@@ -52,6 +52,8 @@ architecture Behavioral of ALU is
 
 signal TKN : STD_LOGIC_VECTOR (15 downto 0) := (others => '0');
 
+
+-------------------------Signal signification----------------------------------------
 --CTRL_ALU "001" ADD | "011" MUL | "010" SUB | "111" DIV
 --FLAG N -> Valeur négative | O -> Overflow | Z -> Sortie égale zéro | C -> Carry Addition
 --TKN Variable temporaire epour le stockage du résultat
@@ -60,7 +62,7 @@ begin
     
     process(OP1,OP2,CTRL_ALU,TKN)
     begin
-    
+    -------------------------------ADD------------------------------
     if CTRL_ALU = "001" then
     
         TKN(8 downto 0)<= std_logic_vector(resize(unsigned(OP1),9) + resize(unsigned(OP2),9));
@@ -74,7 +76,7 @@ begin
             O<='1';
             C<='1';
         end if;
-        
+    -----------------------------SUB--------------------------------    
     elsif CTRL_ALU = "011" then
     
         TKN(8 downto 0)<= std_logic_vector(resize(unsigned(OP1),9) - resize(unsigned(OP2),9));
@@ -87,7 +89,7 @@ begin
         else 
             O<='1';
         end if;
-        
+    -----------------------------MUL---------------------------------    
     elsif CTRL_ALU = "010" then
     
         TKN <=std_logic_vector(unsigned(OP1) * unsigned(OP2)); 
@@ -110,13 +112,13 @@ begin
             Z <= '0';
             N <= '0';
         end if;
-        
+    ----------------------DIV---------------------------------------    
     elsif CTRL_ALU = "100" then
        O<='0';
        C<='0';
        Z<='0';
        N<='0';
-       
+       -----TEST DIV PAR ZERO---
        if OP2 = X"00" then
            O<='1';
            TKN(7 downto 0) <= X"FF";
