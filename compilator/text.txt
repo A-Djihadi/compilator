@@ -1,16 +1,29 @@
+int add(int first, int second){
+    return first + second;
+}
+
 int Hello_world(int time){
-    int test=345;
-    const hello_world = 0;
+    int test=4;
+    const hello_world = 1;
     if(test = time){
         printf(hello_world);
     }else{
-        printf(test);
+        if(test > time){
+            printf(test);
+        }else{
+            printf(time);
+        }
     }
-    return test;
+    time = add(time, hello_world);
+    return time + 1;
 }
 
 int main(){
     int toto=3;
+    int index = 0;
+    while( index < 10){
+        printf(index);
+        index = Hello_world(index);
+    }
     printf(toto);
-    toto = Hello_world(toto);
 }

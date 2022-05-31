@@ -23,7 +23,7 @@ void supprlast(struct List* list){
 void clearlist(struct List* list){
   struct node * tmp = list->start;
   if(tmp != NULL){
-    while(tmp->next != list->end){
+    while(tmp->next != NULL){
       tmp = tmp->next;
       free(list->start);
       list->start=tmp;
@@ -31,6 +31,7 @@ void clearlist(struct List* list){
     free(list->end);
     list->start = NULL;
     list->end = NULL;
+    list->addr_max=0;
   }
   
 }
