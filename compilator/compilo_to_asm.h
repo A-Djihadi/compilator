@@ -9,7 +9,6 @@
 struct pair{
     int from;
     int to;
-    int else_to;
     //1 for simple if, 2 for if else 
     int type;
 };
@@ -18,6 +17,7 @@ void init_fct(char *name);
 void close_fct();
 void addIntParam(char *name1);
 void addConstParam(char *name1);
+void print_return(char * name);
 
 
 //called at the start of the compiler, opens the file
@@ -63,7 +63,6 @@ char *affectation(int val);
 
 int  init_call_fct();
 void param_fct(char *name);
-void print_return(char * name);
 char * check_fct_call(char *name);
 
 #endif

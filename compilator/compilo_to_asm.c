@@ -57,6 +57,7 @@ void init_fct(char *name){
     // Reset all needed parameters
     nb_Params=0;
     nbVarTemp = 0;
+    nb_ligne = 0;
     
     //save the name of the fct
     char* namefile = malloc(SIZE_FONCTION_NAME);
@@ -92,6 +93,20 @@ void addConstParam(char *name1){
         nb_Params++;
     }else{
         printf("Should not happen\n");
+    }
+}
+
+void print_return(char * name){
+    int address, test;
+    if((test = inlist(notre_list,name,&address)) == 0){      
+        printf("Not declared variable\n");
+    }else if(test == 4){
+        printf("Integer not instanciated\n");
+    }
+
+    if(address != 0){
+        fprintf(fichier_tot,"COP 0 %d\n", address);
+        nb_ligne++;
     }
 }
 
@@ -139,7 +154,7 @@ int print_JMF(char* nom){
     return -1;
 }
 
-int if_toPatch(int nb_if){
+int if_toPatch(int nb_if){ 
 
     nb_ligne++;
     // set the patch for the previous jump
@@ -247,7 +262,8 @@ void patch(char* name){
 
         while ( fgets( read_line, sizeof read_line, fichier_tmp) != NULL ){
             strcpy(write_line, read_line);
-            fprintf (fichier_tot , write_line);
+            fprintf(fichier_tot , write_line);
+            line++;
         }
         remove("tmp.txt");
         
@@ -577,15 +593,3 @@ char * check_fct_call(char *name){
     return nom;
 }
 
-void print_return(char * name){
-    int address, test;
-    if((test = inlist(notre_list,name,&address)) == 0){      
-        printf("Not declared variable\n");
-    }else if(test == 4){
-        printf("Integer not instanciated\n");
-    }
-
-    if(address != 0){
-        fprintf(fichier_tot,"COP 0 %d\n", address);
-    }
-}
